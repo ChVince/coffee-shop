@@ -1,0 +1,12 @@
+{
+"noArticleFound" : "No article found",
+"noArticlesFound": "No articles found",
+"noImg" : "Article must contain img",
+"notFound": "Not found",
+"badRequest": "Bad request",
+"errorOnCoverDelete": "Internal server error!. Article cover wasn't deleted",
+"stateResponse" : {
+"SUCCESS_STATE": "SUCCESS",
+"FAIL_STATE" : "ERR"
+}
+}
