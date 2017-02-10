@@ -8,7 +8,6 @@ const articleSchema = new Schema({
     annotation: String,
     imgURL: String,
     date: {type: Date, default: Date.now()},
-    likes: Number
 });
 
 module.exports.schema = articleSchema;

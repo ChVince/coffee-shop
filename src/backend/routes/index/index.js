@@ -3,7 +3,7 @@ const router = express.Router();
  router.use('/*', (req,res,next) =>{
 
      res.header('Access-Control-Allow-Origin', "*");
-     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
      res.header('Access-Control-Allow-Credentials', true);
      res.header('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept, Cache-Control, Expires");
 
@@ -16,3 +16,4 @@ const router = express.Router();
  router.use('/api/articles',require('../articles/index'));
 
 
+module.exports = router;

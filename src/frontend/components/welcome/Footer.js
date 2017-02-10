@@ -5,7 +5,13 @@ class Footer extends React.Component {
     render (){
         return (
             <footer>
-                <h2>New Record</h2>
+                <div className="autograph">
+                    New Record
+                </div>
+                <div className="references"></div>
+                <div className="copy">
+                    © New Record
+                </div>
             </footer>
         )
 }

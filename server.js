@@ -2,35 +2,33 @@ const path = require('path');
 const webpack = require('webpack');
 const express = require('express');
 const config = require('./webpack.config');
+const connect = require('./src/backend/common/db/db-connect');
+
 
 const app = express();
 const compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
-  publicPath: config.output.publicPath
+    publicPath: config.output.publicPath
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(require('./src/backend/routes/index'));
+connect();
 
 
-
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 
+app.listen(3000, function (err) {
+    if (err) {
+        return console.error(err);
+    }
 
-
-
-
-
-app.listen(3000, function(err) {
-  if (err) {
-    return console.error(err);
-  }
-
-  console.log('Listening at http://localhost:3000/');
+    console.log('Listening at http://localhost:3000/');
 });

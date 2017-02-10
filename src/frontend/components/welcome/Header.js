@@ -3,7 +3,7 @@ import {Nav, NavItem, Button} from 'react-bootstrap'
 require('../../styles/navbar.less');
 
 
-class Navbar extends React.Component {
+class NavBar extends React.Component {
     render() {
         return (
             <header id="main-header">
@@ -16,11 +16,11 @@ class Navbar extends React.Component {
                         </div>
                         <div className="navbar-collapse collapse">
                             <ul id="main-nav" className="nav navbar-nav navbar-right">
-                                <li> <Button bsSize="large" bsStyle="link">About</Button>
+                                <li><Button bsSize="large" bsStyle="link">About</Button>
                                 </li>
                                 <li>
                                     <div className="shop-nav-button">
-                                    <Button bsSize="large" bsStyle="link">Shop</Button>
+                                        <Button bsSize="large" bsStyle="link">Shop</Button>
                                     </div>
                                 </li>
                                 <li>
@@ -36,13 +36,18 @@ class Navbar extends React.Component {
     }
 }
 
-export default Navbar;
 
-
-{/*
- <div className="pull-right navbar-btn">
- <Button bsStyle="customLink">About</Button>
- <Button bsStyle="customLink">Shop</Button>
- <Button bsStyle="customLogin">Login</Button>
- </div>*/
+class Header extends React.Component {
+    render() {
+        return (
+            <div className="cover">
+                <div className="cover-image">
+                    <div className="container">
+                        <NavBar/>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }
+export default  Header;

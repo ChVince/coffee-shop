@@ -7,7 +7,7 @@ class ArticleService {
 
 
     constructor() {
-        this.perPage = 12;
+        this.perPage = 3;
     }
 
     getPageNumArticles() {
@@ -16,6 +16,7 @@ class ArticleService {
         }).then(incomingResult => {
             const pageNum = Math.ceil(incomingResult.body.length / this.perPage);
             let result = new Result(messages.stateResponse.SUCCESS_STATE, {pageNum: pageNum});
+
             return result;
         })
     }
@@ -42,4 +43,4 @@ class ArticleService {
 }
 
 
-export default ArticleService;
+module.exports =  new ArticleService ();
