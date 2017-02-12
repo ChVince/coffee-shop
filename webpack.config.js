@@ -5,7 +5,7 @@ module.exports = {
     devtool:'eval-cheap-module-source-map',
     entry: [
         'webpack-hot-middleware/client',
-        './src/frontend/components/welcome/index'
+        './src/frontend/components/index'
     ],
     output: {
         path: path.join(__dirname, 'dist'),
@@ -24,7 +24,7 @@ module.exports = {
             }, {
                 test: /\.less$/, loader: "style!css!less"
             }, {
-                test: /\.(jpg|png|svg)$/,
+                test: /\.(jpg|png|svg|gif)$/,
                 loader: 'file-loader?name=[name].[ext]'
             }
         ]

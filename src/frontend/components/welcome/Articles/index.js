@@ -24,20 +24,30 @@ class Articles extends React.Component {
 
     render() {
         let listArticles;
+        let articleSpinner;
+        let content;
 
-        if (this.props.articles && this.props.articles.length > 0) {
+        if (this.props.spinner) {
+            articleSpinner =
+                <div className="article-spinner-wrapper">
+                    <div className="article-spinner"/>
+                </div>
+
+
+        } else if (this.props.articles && this.props.articles.length > 0) {
             listArticles = this.props.articles.map((article, index) => {
                 return (
                     <Article key={index} article={article}/>
                 )
             });
         }
+
+        content = listArticles? listArticles: articleSpinner;
+
         return (
             <section className="container-fluid grid thumbs-masonry">
                 <div className="row">
-                    {
-                        listArticles
-                    }
+                    {content}
                 </div>
                 <div className="pagination-wrapper">
                     <div>
@@ -61,7 +71,8 @@ Articles.propTypes = {
     articlesSpinner: React.PropTypes.bool.isRequired,
     getArticles: React.PropTypes.func.isRequired,
     pageNum: React.PropTypes.number.isRequired,
-    notification: React.PropTypes.object.isRequired
+    notification: React.PropTypes.object.isRequired,
+    spinner: React.PropTypes.bool.isRequired
 };
 
 export default  Articles;

@@ -20,9 +20,10 @@ app.use(require('./src/backend/routes/index'));
 connect();
 
 
-app.get('*', function (req, res) {
+app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
+
 
 
 app.listen(3000, function (err) {

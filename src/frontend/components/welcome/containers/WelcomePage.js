@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../Header'
+import NavBar from '../NavBar'
 import  Footer from '../Footer'
 import Articles from '../Articles/index'
 import {bindActionCreators} from 'redux'
@@ -7,9 +7,23 @@ import {connect} from 'react-redux'
 import {getArticles} from '../../../actions'
 import {getArticlesPageNum} from '../../../actions'
 import Annotation from '../Annotation'
+import VideoBar from '../video'
 
 
-require('../../../styles/welcome.less');
+require('../../../styles/newStyles/welcome.less');
+
+
+class Header extends React.Component {
+    render() {
+        return (
+            <div className="cover">
+                <div className="cover-image">
+                      <NavBar/>
+                </div>
+            </div>
+        )
+    }
+}
 
 class WelcomePage extends React.Component {
 
@@ -19,14 +33,14 @@ class WelcomePage extends React.Component {
     }
 
 
-
     render() {
         return (
             <div className="welcome-page">
                 <Header/>
-                <Annotation/>
-                <Articles {...this.props}/>
-                <Footer/>
+                {/*<Annotation/>*/}
+                 <VideoBar view={this.props.view} clipList={this.props.clipList}/>
+               {/*<Articles {...this.props}/>*/}
+                {/* <Footer/>*/}
             </div>
         )
     }
@@ -40,7 +54,10 @@ WelcomePage.propTypes = {
     getArticles: React.PropTypes.func.isRequired,
     getArticlesPageNum: React.PropTypes.func.isRequired,
     pageNum: React.PropTypes.number.isRequired,
-    notification: React.PropTypes.object.isRequired
+    notification: React.PropTypes.object.isRequired,
+    spinner: React.PropTypes.bool.isRequired,
+    view: React.PropTypes.string.isRequired,
+    clipList: React.PropTypes.array.isRequired
 };
 
 
@@ -50,7 +67,10 @@ function mapStateToProps(state) {
         articles: state.welcomePage.articles,
         articlesSpinner: state.welcomePage.spinner,
         pageNum: state.welcomePage.pageNum,
-        notification: state.welcomePage.notification
+        notification: state.welcomePage.notification,
+        spinner: state.welcomePage.spinner,
+        view: state.welcomePage.view,
+        clipList: state.welcomePage.clipList,
     }
 }
 
