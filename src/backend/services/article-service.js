@@ -1,5 +1,5 @@
 
-const messages = require('../i18n/message_en.json');
+const messages = require('../i18n/system.json');
 const Result = require('./../common/response');
 const Article = require('../models/Article').Article;
 

@@ -8,6 +8,6 @@ const initialState = {
             error: false,
             msg: ''
         }
-    }
+    },
 };
 export default initialState;

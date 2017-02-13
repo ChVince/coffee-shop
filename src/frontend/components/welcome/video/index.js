@@ -3,7 +3,7 @@ import React from 'react'
 import {NavItem, Nav,Pagination} from 'react-bootstrap'
 
 import VideoLayout from './ClipLayout'
-require('../../../styles/videoBar.less');
+/*require('../../../styles/videoBar.less');*/
 
 class VideoBar extends React.Component {
     constructor(props) {

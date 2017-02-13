@@ -1,29 +1,30 @@
 import React from 'react';
 import NavBar from '../NavBar'
 import  Footer from '../Footer'
-import Articles from '../Articles/index'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import {getArticles} from '../../../actions'
 import {getArticlesPageNum} from '../../../actions'
-import Annotation from '../Annotation'
 import VideoBar from '../video'
 
 
-require('../../../styles/newStyles/welcome.less');
+require('../../../styles/new-styles/global.less');
 
 
-class Header extends React.Component {
+class PortfolioClip extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
-            <div className="cover">
-                <div className="cover-image">
-                      <NavBar/>
-                </div>
-            </div>
-        )
+            <iframe className="portfolio-clip" frameBorder="0" allowFullScreen
+                    src="https://www.youtube.com/embed/3jT_q7dt-cM">
+
+            </iframe>)
     }
 }
+
 
 class WelcomePage extends React.Component {
 
@@ -36,11 +37,9 @@ class WelcomePage extends React.Component {
     render() {
         return (
             <div className="welcome-page">
-                <Header/>
-                {/*<Annotation/>*/}
-                 <VideoBar view={this.props.view} clipList={this.props.clipList}/>
-               {/*<Articles {...this.props}/>*/}
-                {/* <Footer/>*/}
+                <NavBar/>
+                <PortfolioClip/>
+                <Footer/>
             </div>
         )
     }

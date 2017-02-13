@@ -1,0 +1,11 @@
+{
+  "header": {
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "contacts": "Contacts",
+    "about": "About"
+  },
+  "footer": {
+    "cngLang" :"Change language"
+  }
+}
