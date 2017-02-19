@@ -1,52 +1,75 @@
-{
-  "dubbing": [
-    {
-      "title": "Особо опасный ПРОГРАММИСТ",
-      "url": "https://youtu.be/28_t-IPRiEo"
-    },
-    {
-      "title": "МАКСИМУС ДОДЕЛАЛ ВИДЕО",
-      "url": "https://youtu.be/iwOY3HU7LZM"
-    },
-    {
-      "title": "Лео устраивается в Macdonald's",
-      "url": "https://youtu.be/2j6drwpNVOs"
-    },
-    {
-      "title": "Пираты Карибского моря на зачетных берегах",
-      "url": "https://youtu.be/bXmW1wydFP4"
-    },
-    {
-      "title": "Бесславные студенты",
-      "url": "https://youtu.be/Iico_VqS8Qw"
-    },
-    {
-      "title": "«Хоббит: Сдача Пяти Сессий» Наушник",
-      "url": "https://youtu.be/IWCE8kYaSYw"
-    },
-    {
-      "title": "Архиллес прогуливает пары!",
-      "url": "https://youtu.be/3zvIVclRfoo"
-    },
-    {
-      "title": "МСТИТЕЛИ В КАЧАЛКЕ",
-      "url": "https://youtu.be/VDbpqUwazzQ"
-    },
-    {
-      "title": "Темный препод: Восхождение СТУДЕНТОВ",
-      "url": "https://youtu.be/DUzeQzUyXYA"
-    },
-    {
-      "title": "Гарри Поттер и дары ПРЕПОДУ",
-      "url": "https://youtu.be/66su9XysM3A"
-    },
-    {
-      "title": "Лиам Нисон ПОКУПАЕТ ПРЕЗЕРВАТИВЫ",
-      "url": "https://youtu.be/Bd4AQGP9r60"
-    },
-    {
-      "title": "Бёрдмен",
-      "url": "https://youtu.be/uB1B06X5yNQ?list=PLvr6cpCwGuSJSsarQK2P2xB82X6gFbEXr"
-    }
-  ]
-}
+[
+  {
+    "isPresentation":"true",
+    "section" : "wedding",
+    "title": "Социальный ролик компьютерных игр 'Сделай свой выбор'",
+    "url": "https://vimeo.com/195301681"
+  },
+
+  {
+    "isPresentation":"false",
+    "section" : "wedding",
+    "title": "Особо опасный ПРОГРАММИСТ",
+    "url": "https://www.youtube.com/embed/28_t-IPRiEo"
+  },
+  {
+    "isPresentation":"false",
+    "section" : "wedding",
+    "title": "Лео устраивается в Macdonald's",
+    "url": "https://www.youtube.com/embed/2j6drwpNVOs"
+  },
+  {
+    "isPresentation":"false",
+    "section" : "wedding",
+    "title": "Пираты Карибского моря на зачетных берегах",
+    "url": "https://youtube.com/embed/bXmW1wydFP4"
+  },
+  {
+    "isPresentation":"false",
+    "section" : "other",
+    "title": "Бесславные студенты",
+    "url": "https://youtube.com/embed/Iico_VqS8Qw"
+  },
+  {
+    "isPresentation":"false",
+    "section" : "other",
+    "title": "«Хоббит: Сдача Пяти Сессий» Наушник",
+    "url": "https://youtube.com/embed/IWCE8kYaSYw"
+  },
+  {
+    "isPresentation":"false",
+    "section" : "other",
+    "title": "Архиллес прогуливает пары!",
+    "url": "https://youtube.com/embed/3zvIVclRfoo"
+  },
+  {
+    "isPresentation":"false",
+    "section" : "voice",
+    "title": "МСТИТЕЛИ В КАЧАЛКЕ",
+    "url": "https://youtube.com/embed/VDbpqUwazzQ"
+  },
+  {
+    "isPresentation":"false",
+    "section" : "voice",
+    "title": "Темный препод: Восхождение СТУДЕНТОВ",
+    "url": "https://youtube.com/embed/DUzeQzUyXYA"
+  },
+  {
+    "isPresentation":"false",
+    "section" : "voice",
+    "title": "Гарри Поттер и дары ПРЕПОДУ",
+    "url": "https://youtube.com/embed/66su9XysM3A"
+  },
+  {
+    "isPresentation":"false",
+    "section" : "voice",
+    "title": "Лиам Нисон ПОКУПАЕТ ПРЕЗЕРВАТИВЫ",
+    "url": "https://youtube.com/embed/Bd4AQGP9r60"
+  },
+  {
+    "isPresentation":"false",
+    "section" : "voice",
+    "title": "Бёрдмен",
+    "url": "https://youtube.com/embed/uB1B06X5yNQ?list=PLvr6cpCwGuSJSsarQK2P2xB82X6gFbEXr"
+  }
+]

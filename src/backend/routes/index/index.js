@@ -13,7 +13,9 @@ router.use('/*', (req, res, next) => {
         next();
     }
 });
-router.use('/api/articles', require('../articles/index'));
+
+router.use('/api/clipList', require('../clipList/index'));
+router.use('/api/clip', require('../clip/index'));
 
 
 module.exports = router;

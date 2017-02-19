@@ -1,13 +1,18 @@
 const initialState = {
-    welcomePage: {
-        articles: [],
-        page: 0,
-        spinner: false,
-        pageNum: 1,
+    clipPage: {
+        clipList: [],
         notification: {
             error: false,
             msg: ''
         }
     },
+
+    welcomePage: {
+        presentationClip: {},
+        notification: {
+            error: false,
+            msg: ''
+        }
+    }
 };
 export default initialState;

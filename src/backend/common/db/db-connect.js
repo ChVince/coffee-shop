@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
-const articleModule = require('./../../models/Article');
-const articleTestData = require('./articles-test-data.json');
+const Clip = require('./../../models/Clip');
+const videoTestData = require('./video.json');
 const opts = require('../../options/dbOptions');
 
 
 const mongo = {
     development: {
-        connectionString: 'mongodb://localhost:27017/coffeeShop'
+        connectionString: 'mongodb://localhost:27017/newRecord'
     },
     production: {
-        connectionString: 'mongodb://localhost:27017/coffeeShop'
+        connectionString: 'mongodb://localhost:27017/newRecord'
     }
 };
 
@@ -35,32 +35,18 @@ function fillDbIfEmpty() {
 }
 
 function _fillArticleCollection() {
-    articleModule.Article.find(function (err, articles) {
+    Clip.find(function (err, clipList) {
         if (err) {
             return console.error(err);
         }
-        if (articles.length) {
+        if (clipList.length) {
             return;
         }
-        articleTestData.forEach((item) => {
+        videoTestData .forEach((item) => {
             item.date = Date.now();
-            new articleModule.Article(item).save();
+            new Clip (item).save();
         });
     });
 }
 
 
-/*function _fillUserCollection() {
-    User.find(function (err, users) {
-        if (err) {
-            return console.error(err);
-        }
-        if (users.length) {
-            return;
-        }
-        userTestData.forEach((item) => {
-            item.date = Date.now();
-            new User(item).save();
-        });
-    });
-}*/

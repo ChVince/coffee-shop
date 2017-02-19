@@ -1,59 +1,121 @@
-import {
-    GET_ARTICLES_REQUEST, GET_ARTICLES_SUCCESS, GET_ARTICLES_FAILURE,
-    GET_ARTICLES_NUM_FAILURE, GET_ARTICLES_NUM_REQUEST, GET_ARTICLES_NUM_SUCCESS
-}
-    from '../constants/actionTypes'
-import {GET_ARTICLES_URL, GET_ARTICLES_NUM_URL} from './../constants/URLs'
-
+import * as actions from '../constants/actionTypes'
+import {CLIP_LIST_URL, PRESENTATION_CLIP_URL, CLIP_URL} from './../constants/URLs'
 import axios from 'axios'
 
-export function getArticles(page) {
-    let prevPage = page - 1;
+export function getClipList() {
     return (dispatch) => {
         dispatch({
-            type: GET_ARTICLES_REQUEST,
-            payload: page
+            type: actions.GET_CLIP_LIST_REQUEST,
         });
-        setTimeout(
-            () => {
-                axios.get(GET_ARTICLES_URL + prevPage)
-                    .then(response => {
-                        dispatch({
-                            type: GET_ARTICLES_SUCCESS,
-                            payload: response.data.entity.body
-                        })
-                    })
-                    .catch(error => {
-                        dispatch({
-                            type: GET_ARTICLES_FAILURE,
-                            payload: error.data.entity.body
-                        })
-                    })
-            }
-            , 550)
-    }
-}
-
-
-export function getArticlesPageNum() {
-    return (dispatch) => {
-        dispatch({
-            type: GET_ARTICLES_NUM_REQUEST
-        });
-        axios.get(GET_ARTICLES_NUM_URL)
+        axios.get(CLIP_LIST_URL)
             .then(response => {
                 dispatch({
-                    type: GET_ARTICLES_NUM_SUCCESS,
+                    type: actions.GET_CLIP_LIST_SUCCESS,
                     payload: response.data.entity.body
-                });
+                })
             })
             .catch(error => {
-                return {
-                    type: GET_ARTICLES_NUM_FAILURE,
+                dispatch({
+                    type: actions.GET_CLIP_LIST_FAILURE,
                     payload: error.data.entity.body
-                }
-            });
+                })
+            })
     }
 }
+
+
+export function getPresentationClip() {
+    return (dispatch) => {
+        dispatch({
+            type: actions.GET_PRESENTATION_CLIP_REQUEST
+        });
+
+        axios.get(PRESENTATION_CLIP_URL)
+            .then(response => {
+                dispatch({
+                    type: actions.GET_PRESENTATION_CLIP_SUCCESS,
+                    payload: response.data.entity.body
+                })
+            })
+            .catch(error => {
+                dispatch ({
+                    type: actions.GET_PRESENTATION_CLIP_FAILURE
+                })
+            })
+
+    }
+}
+
+
+export function changePresentationClip(id) {
+    return (dispatch) => {
+        dispatch({
+            type: actions.CHANGE_PRESENTATION_CLIP_REQUEST
+        });
+
+
+        axios.put(PRESENTATION_CLIP_URL, {
+            id: id
+        })
+            .then(response => {
+                dispatch({
+                    type: actions.CHANGE_PRESENTATION_CLIP_SUCCESS,
+                    payload: response.data.entity.body
+                })
+            })
+            .catch(error => {
+                dispatch ({
+                    type: actions.CHANGE_PRESENTATION_CLIP_FAILURE
+                })
+            })
+
+    }
+}
+
+export function addClip(clip) {
+    return (dispatch) => {
+        dispatch({
+            type: actions.ADD_CLIP_REQUEST
+        });
+        axios.post(CLIP_URL, {
+            clip: clip
+        })
+            .then(response => {
+                dispatch({
+                    type: actions.ADD_CLIP_SUCCESS,
+                })
+            })
+            .catch(error => {
+                dispatch ({
+                    type: actions.ADD_CLIP_FAILURE
+                })
+            })
+
+    }
+}
+
+
+export function removeClip(id) {
+    return (dispatch) => {
+        dispatch({
+            type: actions.REMOVE_CLIP_REQUEST
+        });
+        axios.delete(CLIP_URL, {
+            clip: clip
+        })
+            .then(response => {
+                dispatch({
+                    type: actions.REMOVE_CLIP_SUCCESS,
+                })
+            })
+            .catch(error => {
+                dispatch ({
+                    type: actions.REMOVE_CLIP_FAILURE
+                })
+            })
+
+    }
+}
+
 
 

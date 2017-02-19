@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux'
-import welcomePage from './welcome-page-reducer'
+import clipPageReducer from './clipPageReducer'
+import welcomePageReducer from './welcomePageReducer'
 
 const coffeeApp = combineReducers({
-    welcomePage: welcomePage
+    clipPage: clipPageReducer,
+    welcomePage: welcomePageReducer
 });
 
 export default coffeeApp;
