@@ -16,12 +16,18 @@ class WelcomePage extends React.Component {
 
 
     render() {
-
+        let presentationClipView;
+        if (this.props.presentationClip._id) {
+            presentationClipView =
+                <iframe className="portfolio-clip" src={this.props.presentationClip.url} frameBorder="0"
+                        webkitAllowFullScreen mozAllowFullScreen
+                        allowFullScreen>
+                </iframe>
+        }
         return (
             <div className="welcome-page">
-                <iframe className="portfolio-clip" src="https://player.vimeo.com/video/173658205"  frameBorder="0" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
+                {presentationClipView}
             </div>
-
         )
     }
 }

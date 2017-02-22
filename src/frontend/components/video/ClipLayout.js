@@ -11,7 +11,11 @@ class ClipLayout extends React.Component {
         let clipList =[];
         if (this.props.clipList && this.props.clipList.length > 0) {
             clipList = this.props.clipList.map((clip, index) => {
-                return <Clip clip={clip} key={index}/>
+                return(
+                    <div className="clip-wrapper">
+                        <Clip clip={clip} key={index}/>
+                    </div>
+                    )
             });
         }
         return (

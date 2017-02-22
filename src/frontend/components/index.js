@@ -4,7 +4,7 @@ import WelcomePage from './welcome/WelcomePage';
 import About from './About'
 import {Provider} from 'react-redux'
 import createStoreForPage from '../store'
-import {Router, Route, browserHistory, IndexRoute} from 'react-router'
+import {Router, Route, browserHistory, IndexRoute, Redirect} from 'react-router'
 import Page from './layouts/Page'
 import ClipBar from './video'
 import Contacts from './Contacts'
@@ -21,9 +21,13 @@ ReactDOM.render(
                 <IndexRoute component={WelcomePage}/>
                 <Route path="about" component={About}/>
                 <Route path="contacts" component={Contacts}/>
-                <Route path="admin" component={AdminPage}/>
-                <Route path="portfolio" component={ClipBar}/>
+                <Route path="weddings" component={ClipBar}/>
+                <Route path="voice" component={ClipBar}/>
+                <Route path="other" component={ClipBar}/>
+
+                <Redirect from="portfolio" to="weddings"/>
             </Route>
+            <Route path="admin" component={AdminPage}/>
         </Router>
     </Provider>
     , document.getElementById('root'));

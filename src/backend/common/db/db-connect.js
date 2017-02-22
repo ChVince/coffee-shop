@@ -6,10 +6,10 @@ const opts = require('../../options/dbOptions');
 
 const mongo = {
     development: {
-        connectionString: 'mongodb://localhost:27017/newRecord'
+        connectionString: 'mongodb://127.0.0.1:27017/newRecord'
     },
     production: {
-        connectionString: 'mongodb://localhost:27017/newRecord'
+        connectionString: 'mongodb://127.0.0.1:27017/newRecord'
     }
 };
 

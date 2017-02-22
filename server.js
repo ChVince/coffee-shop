@@ -3,9 +3,15 @@ const webpack = require('webpack');
 const express = require('express');
 const config = require('./webpack.config');
 const connect = require('./src/backend/common/db/db-connect');
+const bodyParser = require('body-parser');
 
 
 const app = express();
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
 const compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
@@ -25,6 +31,18 @@ app.get('/*', function (req, res) {
 });
 
 
+
+app.use(function (req, res, next) {
+    const err = new Error('Not found');
+    err.status = 404;
+    next(err);
+});
+
+app.use(function (err, req, res) {
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+    res.status(err.status || 500);
+});
 
 app.listen(3000, function (err) {
     if (err) {

@@ -4,7 +4,9 @@ const initialState = {
         notification: {
             error: false,
             msg: ''
-        }
+        },
+        page: 0,
+        pageNum: 0
     },
 
     welcomePage: {

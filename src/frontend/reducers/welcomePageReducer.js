@@ -1,4 +1,4 @@
-import * as actions from '../constants/actionTypes'
+import * as actions from '../constants/asyncActionTypes'
 
 const initialState = {
     presentationClip: {},
@@ -20,6 +20,16 @@ export default function (state = initialState, action) {
         case actions.GET_PRESENTATION_CLIP_FAILURE: {
             return {...state, notification: action.payload, preloader: false}
         }
+        case actions.CHANGE_PRESENTATION_CLIP_REQUEST:{
+            return {...state, preloader: true}
+        }
+        case actions.CHANGE_PRESENTATION_CLIP_SUCCESS:{
+            return {...state, presenatationClip: action.payload, preloader: false}
+        }
+        case actions.CHANGE_PRESENTATION_CLIP_FAILURE:{
+            return {...state, notification: action.payload, preloader: false}
+        }
+
         default:
             return state
     }

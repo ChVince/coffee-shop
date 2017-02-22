@@ -14,7 +14,7 @@ class Footer extends React.Component {
                         <a className="social-network" href="#">
                             <i className="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
                         </a>
-                        <a className="social-network" href="#">
+                        <a id="social-network-id" className="social-network" href="#">
                             <i className="fa fa-instagram fa-2x" aria-hidden="true"></i>
                         </a>
                     </div>

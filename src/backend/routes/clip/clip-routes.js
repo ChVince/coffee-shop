@@ -3,7 +3,7 @@ const clipService = require('../../services/clip-service');
 
 class ClipRoutes extends Routes {
     addClip(req, res, next) {
-        const {clip} = req.params;
+        const {clip} = req.body;
         clipService.addClip(clip)
             .then(this.response(res))
             .catch(this.response(res));
@@ -18,7 +18,7 @@ class ClipRoutes extends Routes {
     }
 
     changePresentationClip(req,res,next){
-        const {id} = req.query;
+        const {id} = req.body;
         clipService.changePresentationClip(id)
             .then(this.response(res))
             .catch(this.response(res));

@@ -6,16 +6,15 @@ class Clip extends React.Component {
     }
 
 
+
     render() {
         return (
-            <div className="clip-wrapper">
-                <div className="clip-title">
-                    {this.props.clip.title}
-                </div>
+
                 <div className="clip">
-                    <iframe className="clip"  src={this.props.clip.url} frameBorder="0" webkitAllowFullScreen mozAllowFullScreen allowFullScreen></iframe>
+                    <iframe className="clip" src={this.props.clip.url} frameBorder="0" webkitAllowFullScreen
+                            mozAllowFullScreen allowFullScreen/>
                 </div>
-            </div>
+
         )
     }
 }

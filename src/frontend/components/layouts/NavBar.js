@@ -1,7 +1,7 @@
 import React from 'react'
 import {Nav, NavItem, Button} from 'react-bootstrap'
-import {Link} from 'react-router'
-/*require('../../styles/new-styles/navbar.less');*/
+import {Link,IndexLink} from 'react-router'
+import {MENU_URLs} from '../../utils/innerURLs'
 require('../../styles/refactoredStyles/navbar.less');
 
 
@@ -12,27 +12,56 @@ class MenuButtons extends React.Component {
     }
 
     _generateTabs() {
-        let tabCount = 4;
-        let menuTabs = ['Home', 'Портфолио', 'Контакты', 'О нас'];
-        let menuHref = ['/', 'portfolio', 'contacts', 'about'];
+        let menuTabs = ['Главная', 'Портфолио', 'Контакты', 'О нас'];
+        let menuHref = [MENU_URLs.HOME_URL, MENU_URLs.PORTFOLIO, MENU_URLs.CONTACTS_URL, MENU_URLs.ABOUT_URL];
         let tabs = [];
-        for (let i = 0; i < tabCount; i++) {
-            let btnClass = (i + 1) == this.props.activeTab ? 'btn-menu-button active-page-button' : 'btn-menu-button';
-            tabs[i] = <li key={i}>
-                <Link to={menuHref[i]}>
-                    <button className={btnClass}>
+        for (let i = 0; i < menuTabs.length ; i++) {
+            let btnClass = menuHref[i] == this.props.activeTab ? 'btn-menu-button active-page-button' : 'btn-menu-button';
+
+            if (menuTabs[i] != 'Портфолио') {
+                tabs[i] = <li key={i}>
+                    <Link to={menuHref[i]}>
+                        <button className={btnClass}>
+                            {menuTabs[i]}
+                        </button>
+                    </Link>
+                </li>
+            } else {
+                tabs[i] = <li key={i}>
+                    <button className={btnClass + " btn-menu-dropdown"}>
                         {menuTabs[i]}
                     </button>
-                </Link>
-            </li>
+                    <ul className="portfolio-header-tabs">
+                        <li>
+                            <IndexLink to={menuHref[i].WEDDINGS_URL}>
+                                <button className="btn-menu-button dropdown-button">
+                                    Weddings
+                                </button>
+                            </IndexLink>
+                        </li>
+                        <li>
+                            <IndexLink to={menuHref[i].VOICE_URL}>
+                                <button className="btn-menu-button dropdown-button">
+                                    Voice
+                                </button>
+                            </IndexLink>
+                        </li>
+                        <li>
+                            <IndexLink to={menuHref[i].OTHER_URL}>
+                                <button className="btn-menu-button dropdown-button">
+                                    Other
+                                </button>
+                            </IndexLink>
+                        </li>
+                    </ul>
+                </li>
+            }
         }
         return tabs;
     }
 
     render() {
         let tabs = this._generateTabs();
-
-
         return (
             <ul className="menu-list">
                 {tabs}
@@ -42,42 +71,26 @@ class MenuButtons extends React.Component {
 }
 
 MenuButtons.propTypes = {
-    activeTab: React.PropTypes.number.isRequired
+    activeTab: React.PropTypes.string.isRequired
 };
 
 
 class NavBar extends React.Component {
     render() {
         return (
-        /*   <div className="header-wrapper1">
-               <div className="header-wrapper">
-                <header className="nr-navbar">
-                   <div className="greeting-logo-wrapper">
-                        <div className="greeting-logo"/>
-                      <div className="menu-wrapper">
-                          <div className="menu-wrapper2">
-                            <MenuButtons activeTab={this.props.activeTab}/>
-                          </div>
-                        </div>
-                    </div>
-                </header>
-            </div>
-            <div className="clip-separate"/>
-           </div>*/
-        <header>
-            <div className="header-logo"/>
-            <div className="menu">
-                <MenuButtons activeTab={this.props.activeTab}/>
+            <header>
+                <div className="header-logo"/>
+                <div className="menu">
+                    <MenuButtons activeTab={this.props.activeTab}/>
+                </div>
+            </header>
 
-            </div>
-            {/*<div className="header-border"/>*/}
-        </header>
         )
     }
 }
 
 NavBar.propTypes = {
-    activeTab: React.PropTypes.number.isRequired
+    activeTab: React.PropTypes.string.isRequired
 };
 
 export default  NavBar;

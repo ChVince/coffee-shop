@@ -7,6 +7,7 @@ header {
   background-position: left;
   background-size: contain;
   padding-top: 2%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5)
 }
 
 .header-logo {
@@ -24,13 +25,14 @@ header {
   height: 45%;
 }
 
-.header-border {
+/*.header-border {
   width: 100%;
-  height: 10%;
+  height: 10px;
   background-color: #0f0f0f;
-}
+}*/
 
 .menu-list {
+  position: relative;
   text-align: center;
   width: 100%;
   margin: auto;
@@ -44,6 +46,45 @@ header {
   margin: auto;
   margin-right: 5px;
   display: inline-block;
+}
+.portfolio-header-tabs > li:last-child{
+  margin-bottom: 0;
+  border: none;
+}
+
+.portfolio-header-tabs {
+  z-index: 500;
+  padding-left: 0;
+display: none;
+  position: absolute;
+  top: 37px;
+  background-color: white;
+  border: 1px solid #bbb9b4;
+}
+.portfolio-header-tabs > li {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid #bbb9b4;
+  text-align: center;
+  width: 150px;
+  margin-right: 0;
+  display: block;
+}
+
+
+.portfolio-header-tabs::before {
+  content: '';
+  position: absolute;
+  left: 35px; top: -20px;
+  border: 10px solid transparent;
+  border-bottom: 10px solid rgba(128, 0, 0, 0.99);
+}
+
+.menu-list > li:hover > .portfolio-header-tabs {
+  display: block;
+}
+.portfolio-header-tabs:hover{
+  display: block;
 }
 
 /*<--Global-->*/
@@ -59,6 +100,8 @@ header {
   -webkit-transition: border-bottom-color .4s ease-out;
   border-bottom: 1px solid transparent;
 }
+
+
 
 .active-page-button {
   outline: none;
@@ -78,7 +121,20 @@ header {
 .btn-menu-button:focus {
   outline: none;
 }
+.btn-menu-dropdown:active{
+  color: #000000;
+}
+.dropdown-button{
+  border: none;
+}
 
+.dropdown-button:hover{
+  border: none;
+  color: #9D1D1F!important;
+}
+.dropdown-button:active{
+  color: #831719!important;
+}
 /*<--Global-->*/
 
 @media screen and (max-width: 1024px) and (max-width: 1366px) {
