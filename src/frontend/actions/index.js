@@ -1,6 +1,12 @@
 import * as actions from '../constants/asyncActionTypes'
 import {ACCEPT_ADD_CLIP_FORM_CHANGES} from '../constants/syncActionTypes'
-import {CLIP_LIST_URL, PRESENTATION_CLIP_URL, CLIP_URL, CLIP_LIST_NUM_URL} from './../constants/URLs'
+import {
+    CLIP_LIST_URL,
+    PRESENTATION_CLIP_URL,
+    CLIP_URL,
+    CLIP_LIST_NUM_URL,
+    PARTNERS_LOGO_URL
+} from './../constants/URLs'
 import axios from 'axios'
 
 export function getClipList(tag, activePage, limit = null) {
@@ -161,9 +167,9 @@ export function getClipListPageNumByTag(tag, limit = null) {
                     type: actions.GET_CLIP_LIST_REQUEST,
                 });
 
-                axios.get(CLIP_LIST_URL + tag + '/' + 0,{
-                    params:{
-                        limit:limit
+                axios.get(CLIP_LIST_URL + tag + '/' + 0, {
+                    params: {
+                        limit: limit
                     }
                 })
                     .then(response => {
@@ -190,6 +196,29 @@ export function getClipListPageNumByTag(tag, limit = null) {
             })
     }
 }
+
+
+export function getPartnersLogo() {
+    return (dispatch) => {
+        dispatch({
+            type: actions.GET_PARTNERS_LOGO_REQUEST
+        });
+
+        axios.get(PARTNERS_LOGO_URL)
+            .then(response => {
+                dispatch({
+                    type: actions.GET_PARTNERS_LOGO_SUCCESS,
+                    payload: response.data.entity.body
+                })
+            })
+            .catch(error => {
+                dispatch({
+                    type: actions.GET_PARTNERS_LOGO_FAILURE
+                })
+            })
+    }
+}
+
 
 
 

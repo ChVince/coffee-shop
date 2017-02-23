@@ -1,5 +1,5 @@
 
-new Coffee Shop
+New Record Site!
 =====================
 
-Updated coffee shop with react+redux+node.js.
+New Record site written with react+redux+node.js.

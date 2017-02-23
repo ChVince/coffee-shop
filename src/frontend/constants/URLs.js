@@ -6,6 +6,8 @@ export const PRESENTATION_CLIP_URL= '/api/clip/presentationClip';
 
 export const CLIP_URL= '/api/clip/';
 
+export const PARTNERS_LOGO_URL= '/api/common/partnersLogo';
+
 
 
 

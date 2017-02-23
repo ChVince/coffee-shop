@@ -15,6 +15,13 @@ const initialState = {
             error: false,
             msg: ''
         }
+    },
+    common :{
+        partnersLogo:[],
+        notification: {
+            error: false,
+            msg: ''
+        }
     }
 };
 export default initialState;
