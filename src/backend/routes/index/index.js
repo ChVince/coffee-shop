@@ -17,6 +17,7 @@ router.use('/*', (req, res, next) => {
 router.use('/api/clipList', require('../clipList/index'));
 router.use('/api/clip', require('../clip/index'));
 router.use('/api/common', require('../common/index'));
+router.use('/api/user', require('../user/index'));
 
 
 module.exports = router;

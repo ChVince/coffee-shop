@@ -1,8 +1,9 @@
 class Routes {
 
-    response(res, statusCode) {
-        statusCode = statusCode || 200;
+    response(res) {
+        let statusCode = 200;
         return entity => {
+            statusCode = entity.statusCode || statusCode;
             entity = entity || {};
             res.status(statusCode).send({entity});
         }

@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux'
 import {getClipList, getClipListPageNumByTag} from '../../actions/index'
 import ClipLayout from '../video/ClipLayout'
 import scrollControl from '../../utils/scrollStyleControl';
-
+import Notification from '../common/Notification'
 
 require('../../styles/refactoredStyles/clipList.less');
 
@@ -28,37 +28,35 @@ class ClipBar extends React.Component {
     }
 
     _handlePagination = (eventkey) => {
-        this.props.getClipList(this.props.tag,eventkey)
+        this.props.getClipList(this.props.tag, eventkey)
     };
 
     render() {
         let activePage = this.props.page + 1;
         return (
             <div className="clip-bar">
+                <Notification error={this.props.notification}/>
                 <div id="cilp-tabs-wrapper">
                     <ul className="clip-tabs">
                         <li>
-                            <Link to='/weddings'>
-                                <button
-                                    className='btn-menu-button'>
-                                    wedding
-                                </button>
+                            <Link activeClassName='active-page-button-clip-list'
+                                  className="btn-menu-button btn-menu-button-clip-list"
+                                  to='/portfolio/weddings'>
+                                Свадьбы
                             </Link>
                         </li>
                         <li >
-                            <Link to='/voice'>
-                                <button
-                                    className='btn-menu-button'>
-                                    voice
-                                </button>
+                            <Link activeClassName='active-page-button-clip-list'
+                                  className="btn-menu-button btn-menu-button-clip-list"
+                                  to='/portfolio/voice'>
+                                Озвучка
                             </Link>
                         </li>
                         <li >
-                            <Link to='/other'>
-                                <button
-                                    className='btn-menu-button'>
-                                    other
-                                </button>
+                            <Link activeClassName='active-page-button-clip-list'
+                                  className="btn-menu-button btn-menu-button-clip-list"
+                                  to='/portfolio/other'>
+                                Другое
                             </Link>
                         </li>
                     </ul>
@@ -72,7 +70,7 @@ class ClipBar extends React.Component {
 
                     <li>
                         <a className="social-network" href="#">
-                            <i className="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+                            <i className="fa fa-facebook fa-2x" aria-hidden="true"></i>
                         </a>
                     </li>
 
@@ -83,25 +81,43 @@ class ClipBar extends React.Component {
                     </li>
                 </ul>
                 <div className="pagination-wrapper">
-                    <Pagination className="user-pagination" bsSize="small"
-                                items={this.props.pageNum}
-                                activePage={activePage}
-                                onSelect={this._handlePagination}
-                    />
+                    <div className="pagination-frame">
+                        <Pagination
+                            prev
+                            next
+                            first
+                            last
+                            bsSize="small"
+                                    items={this.props.pageNum}
+                                    activePage={activePage}
+                                    onSelect={this._handlePagination}
+                        />
+                    </div>
                 </div>
                 <ClipLayout clipList={this.props.clipList}/>
                 <div className="pagination-wrapper">
-                    <Pagination className="user-pagination" bsSize="small"
-                                items={this.props.pageNum}
-                                activePage={activePage}
-                                onSelect={this._handlePagination}
-                    />
+                    <div className="pagination-frame">
+                        <Pagination
+                            prev
+                            next
+                            first
+                            last
+                            bsSize="small"
+                                    items={this.props.pageNum}
+                                    activePage={activePage}
+                                    onSelect={this._handlePagination}
+                        />
+                    </div>
                 </div>
             </div>
         );
     }
 }
 
+
+function _parseLastPathURL(url) {
+    return url.substr(url.lastIndexOf('/') + 1);
+}
 
 ClipBar.propTypes = {
     clipList: React.PropTypes.array.isRequired,
@@ -114,10 +130,10 @@ ClipBar.propTypes = {
 function mapStateToProps(state, ownProps) {
     return {
         clipList: state.clipPage.clipList,
-        tag: ownProps.location.pathname.substr(1),
+        tag: _parseLastPathURL(ownProps.location.pathname),
         pageNum: state.clipPage.pageNum,
         page: state.clipPage.page,
-        preloader: state.clipPage.preloader
+        notification: state.notificationHandler.notification
     }
 }
 function mapDispatchToProps(dispatch) {

@@ -3,12 +3,13 @@ import thunk from 'redux-thunk'
 import {applyMiddleware} from 'redux'
 import createLogger from 'redux-logger'
 import coffeeApp from '../reducers'
-import initialState from './initialState'
+/*import initialState from './initialState'*/
 
 
 function createStoreForPage() {
     const logger = createLogger();
-    const store = createStore(coffeeApp, initialState, applyMiddleware(thunk, logger));
+    let initialState = {};
+    const store = createStore(coffeeApp, initialState , applyMiddleware(thunk, logger));
 
     if (module.hot) {
         module.hot.accept('../reducers', () => {

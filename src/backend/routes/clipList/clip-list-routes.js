@@ -1,6 +1,7 @@
 const Routes = require('../index/routes');
 const clipService = require('../../services/clip-service');
 
+
 class ClipListRoutes extends Routes {
 
     getClipList(req, res, next) {

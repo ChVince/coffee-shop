@@ -4,11 +4,12 @@ import WelcomePage from './welcome/WelcomePage';
 import About from './About'
 import {Provider} from 'react-redux'
 import createStoreForPage from '../store'
-import {Router, Route, browserHistory, IndexRoute, Redirect} from 'react-router'
+import {Router, Route, browserHistory, IndexRoute, IndexRedirect, Redirect} from 'react-router'
 import Page from './layouts/Page'
 import ClipBar from './video'
 import Contacts from './Contacts'
 import AdminPage from './admin'
+import Login from './Login'
 
 
 let store = createStoreForPage();
@@ -19,15 +20,18 @@ ReactDOM.render(
         <Router history={browserHistory}>
             <Route path="/" component={Page}>
                 <IndexRoute component={WelcomePage}/>
-                <Route path="about" component={About}/>
-                <Route path="contacts" component={Contacts}/>
-                <Route path="weddings" component={ClipBar}/>
-                <Route path="voice" component={ClipBar}/>
-                <Route path="other" component={ClipBar}/>
-
-                <Redirect from="portfolio" to="weddings"/>
+                <Route path="/about" component={About}/>
+                <Route path="/login" component={Login}/>
+                <Route path="/contacts" component={Contacts}/>
+                <Route path="/portfolio">
+                    <IndexRedirect to="/portfolio/weddings"/>
+                    <Route path="/portfolio/weddings" component={ClipBar}/>
+                    <Route path="/portfolio/voice" component={ClipBar}/>
+                    <Route path="/portfolio/other" component={ClipBar}/>
+                </Route>
             </Route>
-            <Route path="admin" component={AdminPage}/>
+            <Route path="/admin"  onEnter={AdminPage.onEnter} component={AdminPage}/>
+
         </Router>
     </Provider>
     , document.getElementById('root'));

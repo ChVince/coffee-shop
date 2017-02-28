@@ -13,8 +13,9 @@ class ToolBar extends React.Component {
 
 
     close = () => {
+        this.props.clearAddClipForm();
         this.setState({showModal: false});
-    }
+    };
 
     open = () => {
         this.setState({showModal: true});
@@ -38,14 +39,13 @@ class ToolBar extends React.Component {
                         <AddClip {...this.props} />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={this.close}>Close</Button>
+                        <Button onClick={this.close}>Закрыть</Button>
                     </Modal.Footer>
                 </Modal>
-
-
-
-
-            </div >
+                <Nav pullRight>
+                    <NavItem onClick={this.props.logout}>Выйти</NavItem>
+                </Nav>
+            </div>
         )
     }
 }
@@ -54,7 +54,9 @@ class ToolBar extends React.Component {
 ToolBar.propTypes = {
     addClip: React.PropTypes.func.isRequired,
     validateAddClipForm: React.PropTypes.func.isRequired,
-    validateForms: React.PropTypes.array.isRequired
+    clearAddClipForm: React.PropTypes.func.isRequired,
+    validateForms: React.PropTypes.array.isRequired,
+    logout: React.PropTypes.func.isRequired
 }
 
 export default ToolBar;

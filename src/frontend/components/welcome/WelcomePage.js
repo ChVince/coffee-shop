@@ -2,7 +2,7 @@ import React from 'react';
 import {bindActionCreators} from 'redux'
 import {getPresentationClip} from '../../actions'
 import {connect} from 'react-redux'
-
+import Notification from '../common/Notification'
 
 class WelcomePage extends React.Component {
     constructor(props) {
@@ -27,6 +27,7 @@ class WelcomePage extends React.Component {
         return (
             <div className="welcome-page">
                 {presentationClipView}
+                <Notification error={this.props.notification}/>
             </div>
         )
     }
@@ -34,7 +35,8 @@ class WelcomePage extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        presentationClip: state.welcomePage.presentationClip
+        presentationClip: state.welcomePage.presentationClip,
+        notification: state.notificationHandler.notification
     }
 }
 

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Clip = require('./../../models/Clip');
+const Admin = require('./../../models/Admin');
 const videoTestData = require('./video.json');
+const adminTestData = require('./test-admin.json');
 const opts = require('../../options/dbOptions');
 
 
@@ -31,10 +33,25 @@ module.exports = function connection() {
 };
 
 function fillDbIfEmpty() {
-    _fillArticleCollection();
+    _fillVideoCollection();
+    _fillAdminTest();
 }
 
-function _fillArticleCollection() {
+
+function _fillAdminTest() {
+    Admin.find(function (err, admin) {
+        if (err) {
+            return console.error(err);
+        }
+
+        if (admin.length>0) {
+            return;
+        }
+        new Admin(adminTestData).save();
+    });
+}
+
+function _fillVideoCollection() {
     Clip.find(function (err, clipList) {
         if (err) {
             return console.error(err);
@@ -42,9 +59,9 @@ function _fillArticleCollection() {
         if (clipList.length) {
             return;
         }
-        videoTestData .forEach((item) => {
+        videoTestData.forEach((item) => {
             item.date = Date.now();
-            new Clip (item).save();
+            new Clip(item).save();
         });
     });
 }

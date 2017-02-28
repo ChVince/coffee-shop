@@ -1,6 +1,7 @@
 class Result {
-    constructor(msg, body = {}) {
-        this.msg = msg;
+    constructor(state, body = {}, statusCode = 200) {
+        this.statusCode = statusCode;
+        this.state = state;
         this.body = body;
     }
 }

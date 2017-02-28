@@ -1,5 +1,5 @@
 import * as actions from '../constants/asyncActionTypes'
-import {ACCEPT_ADD_CLIP_FORM_CHANGES} from '../constants/syncActionTypes'
+import {ACCEPT_ADD_CLIP_FORM_CHANGES, CLEAR_ADD_CLIP_FORM} from '../constants/syncActionTypes'
 import {
     CLIP_LIST_URL,
     PRESENTATION_CLIP_URL,
@@ -9,34 +9,40 @@ import {
 } from './../constants/URLs'
 import axios from 'axios'
 
-export function getClipList(tag, activePage, limit = null) {
+
+function _dispatchClipListPromise(dispatch, tag, activePage, limit = null) {
     let serverNextPage = activePage - 1;
+    dispatch({
+        type: actions.GET_CLIP_LIST_REQUEST,
+    });
 
-    return (dispatch) => {
-        dispatch({
-            type: actions.GET_CLIP_LIST_REQUEST,
-        });
-
-        axios.get(CLIP_LIST_URL + tag + '/' + serverNextPage, {
-            params: {
-                limit: limit
-            }
+    axios.get(CLIP_LIST_URL + tag + '/' + serverNextPage, {
+        params: {
+            limit: limit
+        }
+    })
+        .then(response => {
+            dispatch({
+                type: actions.GET_CLIP_LIST_SUCCESS,
+                payload: {
+                    clipList: response.data.entity.body,
+                    page: serverNextPage,
+                }
+            })
         })
-            .then(response => {
-                dispatch({
-                    type: actions.GET_CLIP_LIST_SUCCESS,
-                    payload: {
-                        clipList: response.data.entity.body,
-                        page: serverNextPage,
-                    }
-                })
+        .catch(error => {
+            let response = error.response;
+            dispatch({
+                type: actions.GET_CLIP_LIST_FAILURE,
+                payload: response.data.entity
             })
-            .catch(error => {
-                dispatch({
-                    type: actions.GET_CLIP_LIST_FAILURE,
-                    payload: error.data.entity.msg
-                })
-            })
+        })
+}
+
+
+export function getClipList(tag, activePage, limit = null) {
+    return (dispatch) => {
+        _dispatchClipListPromise(dispatch, tag, activePage, limit)
     }
 }
 
@@ -53,9 +59,11 @@ export function getPresentationClip() {
                     payload: response.data.entity.body
                 })
             })
-            .catch(error => {
+            .catch((error) => {
+                let response = error.response;
                 dispatch({
-                    type: actions.GET_PRESENTATION_CLIP_FAILURE
+                    type: actions.GET_PRESENTATION_CLIP_FAILURE,
+                    payload: response.data.entity
                 })
             })
 
@@ -78,8 +86,10 @@ export function changePresentationClip(id) {
                 })
             })
             .catch(error => {
+                let response = error.response;
                 dispatch({
-                    type: actions.CHANGE_PRESENTATION_CLIP_FAILURE
+                    type: actions.CHANGE_PRESENTATION_CLIP_FAILURE,
+                    payload: response.data.entity
                 })
             })
 
@@ -97,11 +107,14 @@ export function addClip(clip) {
             .then(response => {
                 dispatch({
                     type: actions.ADD_CLIP_SUCCESS,
+                    payload: response.data.entity
                 })
             })
             .catch(error => {
+                let response = error.response;
                 dispatch({
-                    type: actions.ADD_CLIP_FAILURE
+                    type: actions.ADD_CLIP_FAILURE,
+                    payload: response.data.entity
                 })
             })
 
@@ -138,8 +151,10 @@ export function removeClip(id) {
                 })
             })
             .catch(error => {
+                let response = error.response;
                 dispatch({
                     type: actions.REMOVE_CLIP_FAILURE,
+                    payload: response.data.entity
                 })
             })
     }
@@ -162,36 +177,15 @@ export function getClipListPageNumByTag(tag, limit = null) {
                     type: actions.GET_CLIP_LIST_NUM_SUCCESS,
                     payload: response.data.entity.body
                 });
-
-                dispatch({
-                    type: actions.GET_CLIP_LIST_REQUEST,
-                });
-
-                axios.get(CLIP_LIST_URL + tag + '/' + 0, {
-                    params: {
-                        limit: limit
-                    }
-                })
-                    .then(response => {
-                        dispatch({
-                            type: actions.GET_CLIP_LIST_SUCCESS,
-                            payload: {
-                                clipList: response.data.entity.body,
-                                page: 0,
-                            }
-                        })
-                    })
-                    .catch(error => {
-                        dispatch({
-                            type: actions.GET_CLIP_LIST_FAILURE,
-                            payload: error.data.entity.msg
-                        })
-                    })
-            })
+            }).then(() => {
+            let defaultActivePage = 1;
+            _dispatchClipListPromise(dispatch, tag, defaultActivePage, limit)
+        })
             .catch(error => {
+                let response = error.response;
                 dispatch({
                     type: actions.GET_CLIP_LIST_FAILURE,
-                    payload: error.data.entity.msg
+                    payload: response.data.entity
                 })
             })
     }
@@ -212,13 +206,21 @@ export function getPartnersLogo() {
                 })
             })
             .catch(error => {
+                let response = error.response;
                 dispatch({
-                    type: actions.GET_PARTNERS_LOGO_FAILURE
+                    type: actions.GET_PARTNERS_LOGO_FAILURE,
+                    payload: response.data.entity
                 })
             })
     }
 }
 
+
+export function clearAddClipForm() {
+    return {
+        type: CLEAR_ADD_CLIP_FORM
+    }
+}
 
 
 

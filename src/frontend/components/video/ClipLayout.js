@@ -1,6 +1,6 @@
 import React from 'react'
 import Clip from './Clip'
-
+import Notification from '../common/Notification'
 
 class ClipLayout extends React.Component {
     constructor(props) {
@@ -12,8 +12,8 @@ class ClipLayout extends React.Component {
         if (this.props.clipList && this.props.clipList.length > 0) {
             clipList = this.props.clipList.map((clip, index) => {
                 return(
-                    <div className="clip-wrapper">
-                        <Clip clip={clip} key={index}/>
+                    <div className="clip-wrapper" key={index}>
+                        <Clip clip={clip} />
                     </div>
                     )
             });

@@ -1,20 +1,15 @@
 header {
   width: 100%;
-  height: 20%;
-  background-color: #2a6496;
-  background: url('../img/nr-header.png');
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: contain;
-  padding-top: 2%;
-  box-shadow: 0 0 2px rgba(0,0,0,0.9)
+  height: 15%;
+  padding-top: 1%;
+  box-shadow: 0 0 5px rgba(178, 178, 178, 0.9)
 }
 
 
 .header-logo {
   margin: auto;
-  width: 10%;
-  height: 45%;
+  width: 9%;
+  height: 50%;
   background: url('../img/nr-logo-5.png') no-repeat left;
   background-size: contain;
 }
@@ -43,9 +38,9 @@ header {
 }
 
 .menu-list li {
-  font-size: 16px;
+  font-size: 18px;
   margin: auto;
-  margin-right: 5px;
+  margin-right: 40px;
   display: inline-block;
 }
 .portfolio-header-tabs > li:last-child{
@@ -58,7 +53,7 @@ header {
   padding-left: 0;
 display: none;
   position: absolute;
-  top: 37px;
+  top: 30px;
   background-color: white;
   border: 1px solid #bbb9b4;
 }
@@ -90,7 +85,9 @@ display: none;
 
 /*<--Global-->*/
 
-.btn-menu-button {
+.btn-menu-button,.btn-menu-button-clip-list {
+  padding: 0;
+  font-size: 15px;
   color: #000000;
   text-transform: uppercase;
   background: transparent;
@@ -105,12 +102,18 @@ display: none;
 
 
 .active-page-button {
+  text-decoration-line:none !important;
   outline: none;
   color: #606060;
   border-bottom: 1px solid #9D1D1F;
 }
 
+
+
+
 .btn-menu-button:hover {
+  text-decoration:none !important;
+  color: #000000;
   border-bottom: 1px solid #9D1D1F;
 }
 
@@ -120,6 +123,8 @@ display: none;
 }
 
 .btn-menu-button:focus {
+  text-decoration:none !important;
+  color: #606060;
   outline: none;
 }
 .btn-menu-dropdown:active{
@@ -179,6 +184,7 @@ display: none;
 @media screen and (max-width: 414px) and (max-width: 736px) {
   header {
     height: 25%;
+    background-image: none;
   }
 
   .menu {

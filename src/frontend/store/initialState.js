@@ -1,27 +1,19 @@
+/*
 const initialState = {
     clipPage: {
         clipList: [],
-        notification: {
-            error: false,
-            msg: ''
-        },
+        error: {},
         page: 0,
         pageNum: 0
     },
 
     welcomePage: {
         presentationClip: {},
-        notification: {
-            error: false,
-            msg: ''
-        }
+        error: {}
     },
-    common :{
-        partnersLogo:[],
-        notification: {
-            error: false,
-            msg: ''
-        }
+    common: {
+        partnersLogo: [],
+        error: {},
     }
 };
-export default initialState;
+export default initialState;*/

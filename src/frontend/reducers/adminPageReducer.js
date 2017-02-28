@@ -1,4 +1,4 @@
-import {ACCEPT_ADD_CLIP_FORM_CHANGES} from '../constants/syncActionTypes'
+import {ACCEPT_ADD_CLIP_FORM_CHANGES,CLEAR_ADD_CLIP_FORM} from '../constants/syncActionTypes'
 import * as actions from '../constants/asyncActionTypes'
 
 
@@ -16,7 +16,7 @@ const initialState = {
             name: "title",
             isValid: false
         }
-    ]
+    ],
 };
 
 
@@ -32,6 +32,22 @@ export default function (state = initialState, action) {
             });
 
             return {...state, validateForms: newValidateForms};
+        case CLEAR_ADD_CLIP_FORM:
+            let initValidateForms = [
+            {
+                name: "section",
+                isValid: false
+            },
+            {
+                name: "url",
+                isValid: false
+            },
+            {
+                name: "title",
+                isValid: false
+            }
+        ];
+            return {...state, validateForms: initValidateForms};
         default :
             return state;
     }

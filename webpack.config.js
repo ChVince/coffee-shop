@@ -1,8 +1,10 @@
-var path = require('path');
-var webpack = require('webpack');
+let path = require('path');
+let webpack = require('webpack');
+let ip = require('ip');
 
+console.log(__dirname);
 module.exports = {
-    devtool:'eval-cheap-module-source-map',
+    devtool: 'eval-cheap-module-source-map',
     entry: [
         'webpack-hot-middleware/client',
         './src/frontend/components/index'
@@ -10,7 +12,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: 'http://localhost:3000/static/'
+        publicPath: 'http://' + ip.address() + ':3000/static/'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
@@ -24,7 +26,7 @@ module.exports = {
             }, {
                 test: /\.less$/, loader: "style!css!less"
             }, {
-                test: /\.(jpg|png|svg|gif|ttf)$/,
+                test: /\.(jpg|png|svg|gif|ttf|otf)$/,
                 loader: 'file-loader?name=[name].[ext]'
             }
         ]

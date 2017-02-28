@@ -1,23 +1,21 @@
 @font-face {
   font-family: CGB;
-  src: url(./../fonts/CenturyGothic-Bold.ttf);
+  src: url(./../fonts/CenturyGothicRegular.ttf);
 }
 
 .contacts {
   width: 100%;
-  height: 80%;
+  height: 70%;
   padding: 12%;
   padding-top: 7%;
 
 }
-
 
 .contacts-wrapper {
   color: #8c8c8c;
   text-align: center;
   width: 750px;
   height: 400px;
-
   margin: auto;
 }
 
@@ -33,43 +31,81 @@
 .contact-left, .contact-right {
   display: inline-block;
   width: 48%;
-  height: 50%;
+  height: 60%;
 }
 
 .contact-left {
   float: left;
 }
-.contact-right{
-  float:right;
+
+.contact-right {
+  float: right;
 }
 
-.phone-number, .address ,.contact-mail{
+.phone-number, .address, .contact-mail {
   height: 50%;
-  padding-left: 20%;
+  padding-left: 13%;
   text-align: left;
   padding-top: 5%;
   padding-bottom: 5%;
 }
 
-.contact-mail{
+.phone-number,.address{
+  padding-left: 30%;
+}
+
+.contact-social-networks {
+  margin-left: 4px;
+  display: inline-block;
+  width: 25px;
+  font-size: 20px;
+}
+
+.contact-mail {
   padding-top: 0;
+}
+.social{
+  height: 150px;
+}
+.social-icon{
+  line-height: 40px;
 }
 .phone-icon, .address-icon, .mail-icon {
   float: left;
   margin: auto;
   display: inline-block;
 }
-.mail-icon{
- line-height:  95px;
+
+.mail-icon {
+  line-height: 95px;
 }
 
 .address-text-wrapper {
   color: #5c5c5c;
   font-family: CGB, serif !important;
   font-weight: bold;
-  display:inline-block;
+  display: inline-block;
   width: 50%;
-  margin-left: 5%;
+  margin-left: 15%;
+}
+.social-text-wrapper{
+  padding-left: 30px;
+  float: right;
+  margin-right: 15%;
+  display: inline-block;
+  width: 220px;
+  height: 120px;
+
+
+}
+.social-text{
+  color: #5c5c5c!important;
+  font-family: CGB, serif !important;
+  font-weight: bold;
+  line-height: 40px;
+}
+.social-text>a{
+  color: #5c5c5c!important;
 }
 
 .contact-text-wrapper {
@@ -79,10 +115,11 @@
   font-size: 16px;
   height: 55px;
   padding-top: 5%;
-  margin-left: 5%;
+  margin-left: 15%;
   display: inline-block;
 }
-.contact-mail .contact-text-wrapper{
+
+.contact-mail .contact-text-wrapper {
   padding-top: 10%;
 }
 
@@ -135,11 +172,12 @@
     font-size: 18px;
   }
 }
-.contacts-border{
+
+.contacts-border {
   background: -webkit-radial-gradient(closest-side, rgb(157, 29, 31), rgba(255, 255, 255, 0));
   background: radial-gradient(closest-side, rgb(157, 29, 31), rgba(255, 255, 255, 0));
   width: 2px;
-  height: 50%;
+  height: 60%;
   display: inline-block;
 }
 

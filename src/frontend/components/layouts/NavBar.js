@@ -16,42 +16,32 @@ class MenuButtons extends React.Component {
         let menuHref = [MENU_URLs.HOME_URL, MENU_URLs.PORTFOLIO, MENU_URLs.CONTACTS_URL, MENU_URLs.ABOUT_URL];
         let tabs = [];
         for (let i = 0; i < menuTabs.length ; i++) {
-            let btnClass = menuHref[i] == this.props.activeTab ? 'btn-menu-button active-page-button' : 'btn-menu-button';
-
             if (menuTabs[i] != 'Портфолио') {
                 tabs[i] = <li key={i}>
-                    <Link to={menuHref[i]}>
-                        <button className={btnClass}>
+                    <IndexLink className='btn-menu-button' activeClassName='active-page-button' to={menuHref[i]}>
                             {menuTabs[i]}
-                        </button>
-                    </Link>
+                    </IndexLink>
                 </li>
             } else {
                 tabs[i] = <li key={i}>
-                    <button className={btnClass + " btn-menu-dropdown"}>
+                    <Link  to={menuHref[i].INDEX} activeClassName='active-page-button' className="btn-menu-button">
                         {menuTabs[i]}
-                    </button>
+                    </Link>
                     <ul className="portfolio-header-tabs">
                         <li>
-                            <IndexLink to={menuHref[i].WEDDINGS_URL}>
-                                <button className="btn-menu-button dropdown-button">
-                                    Weddings
-                                </button>
-                            </IndexLink>
+                            <Link activeClassName='active-page-button' className="btn-menu-button dropdown-button" to={menuHref[i].WEDDINGS_URL}>
+                                    Свадьбы
+                            </Link>
                         </li>
                         <li>
-                            <IndexLink to={menuHref[i].VOICE_URL}>
-                                <button className="btn-menu-button dropdown-button">
-                                    Voice
-                                </button>
-                            </IndexLink>
+                            <Link activeClassName='active-page-button' className="btn-menu-button dropdown-button" to={menuHref[i].VOICE_URL}>
+                                    Озвучка
+                            </Link>
                         </li>
                         <li>
-                            <IndexLink to={menuHref[i].OTHER_URL}>
-                                <button className="btn-menu-button dropdown-button">
-                                    Other
-                                </button>
-                            </IndexLink>
+                            <Link activeClassName='active-page-button' className="btn-menu-button dropdown-button"  to={menuHref[i].OTHER_URL}>
+                                    Другое
+                            </Link>
                         </li>
                     </ul>
                 </li>
@@ -70,9 +60,6 @@ class MenuButtons extends React.Component {
     }
 }
 
-MenuButtons.propTypes = {
-    activeTab: React.PropTypes.string.isRequired
-};
 
 
 class NavBar extends React.Component {
@@ -81,7 +68,7 @@ class NavBar extends React.Component {
             <header>
                 <div className="header-logo"/>
                 <div className="menu">
-                    <MenuButtons activeTab={this.props.activeTab}/>
+                    <MenuButtons/>
                 </div>
             </header>
 
@@ -89,9 +76,6 @@ class NavBar extends React.Component {
     }
 }
 
-NavBar.propTypes = {
-    activeTab: React.PropTypes.string.isRequired
-};
 
 export default  NavBar;
 

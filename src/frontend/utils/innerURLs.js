@@ -2,9 +2,10 @@ export const MENU_URLs = {
     HOME_URL: '/',
     CONTACTS_URL: '/contacts',
     PORTFOLIO: {
-        WEDDINGS_URL: '/weddings',
-        VOICE_URL: '/voice',
-        OTHER_URL: '/other'
+        INDEX:'/portfolio',
+        WEDDINGS_URL: '/portfolio/weddings',
+        VOICE_URL: '/portfolio/voice',
+        OTHER_URL: '/portfolio/other'
     },
     ABOUT_URL: '/about'
 };

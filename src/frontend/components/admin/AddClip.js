@@ -22,7 +22,7 @@ class AddClip extends React.Component {
     }
 
     addClip = () => {
-        let clip={};
+        let clip = {};
         let refsAsArr = Object.keys(this.refs);
         for (let i = 0; i < refsAsArr.length; i++) {
             let name = refsAsArr[i];
@@ -33,25 +33,44 @@ class AddClip extends React.Component {
 
     render() {
         let disabled = !this._checkIsValidate();
+        let notification
+
+        if(this.props.notification.state) {
+            if (this.props.notification.statusCode == 200) {
+                notification = <span className="success">{this.props.notification.body}</span>
+
+            } else {
+                notification = <span className="error">{this.props.notification.body}</span>;
+            }
+        }
         return (
+
             <div className="addClip">
-                <div className="input-group">
-                    <span className="input-group-addon" id="basic-addon1"><i className="fa fa-tag" aria-hidden="true"></i></span>
-                    <input type="text" ref="section" name="section" onChange={this.onChange} className="form-control" placeholder="Video tag" aria-describedby="basic-addon1"/>
+                <div style={{color: 'red', marginBottom: '20px'}}>
+                    <span >*Все поля обязательны</span>
                 </div>
+                <label>Тег:</label>
 
-                <div className="input-group">
-                    <span className="input-group-addon">name: </span>
-                    <input type="text" ref="title" name="title" onChange={this.onChange} className="form-control" placeholder="Title" aria-describedby="basic-addon1"/>
-                </div>
+                <input type="text" ref="section" name="section" onChange={this.onChange}
+                       className="form-control admin-add-clip-input"
+                       aria-describedby="basic-addon1"/>
 
-                <label htmlFor="basic-url">Your clip URL</label>
-                <div className="input-group">
-                    <span className="input-group-addon" id="basic-addon3">www</span>
-                    <input ref="url" type="text" name="url" onChange={this.onChange} className="form-control" id="basic-url" aria-describedby="basic-addon3"/>
-                </div>
 
-                <Button onClick={this.addClip}  bsStyle="success" disabled={disabled} bsSize="small">Добавить</Button>
+                <label>Название: </label>
+
+                <input type="text" ref="title" name="title" onChange={this.onChange}
+                       className="form-control admin-add-clip-input"
+                       aria-describedby="basic-addon1"/>
+
+
+                <label >Ссылка на ваше видео: </label>
+
+                <input ref="url" type="text" name="url" onChange={this.onChange}
+                       className="form-control admin-add-clip-input" id="basic-url"
+                       aria-describedby="basic-addon3"/>
+
+                {notification}
+                <Button onClick={this.addClip} bsStyle="success" disabled={disabled} bsSize="small">Добавить</Button>
             </div>
         )
     }

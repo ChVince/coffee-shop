@@ -27,7 +27,7 @@ class About extends React.Component {
         if (this.props.partnersLogo && this.props.partnersLogo.length > 0) {
             partnersLogo = this.props.partnersLogo.map((item, index) => {
                 return (
-                    <div className="partner-logo" key={index} style={{backgroundImage:'url(' + item.url+')'}}/>
+                    <div className="partner-logo" key={index} style={{backgroundImage: 'url(' + item.url + ')'}}/>
                 )
             })
         }
@@ -39,10 +39,14 @@ class About extends React.Component {
                      </span>
                 <div className="about-decoration-blockborder"/>
                 <div className="about-text">
-                    New record - это продакшн студия, которая основанна Арсением Богуновым и находится в городе Минске, Беларусь.
-                    Мы команда специалистов, которые создают различного рода видео, как для корпоративных клиентов, так и для частных лиц.
-                    Мы создаем эксклюзивное видео. Глядя на каждый проект мы имеем возможность вырастить творческие идеи.
-                    Мы гордимся дружественными отношениями с нашими клиентами и всегда открыты для нового сотрудничества.
+                    New record - это продакшн студия, которая основанна Арсением Богуновым и находится в городе Минске,
+                    Беларусь.
+                    Мы команда специалистов, которые создают различного рода видео, как для корпоративных клиентов, так
+                    и для частных лиц.
+                    Мы создаем эксклюзивное видео. Глядя на каждый проект мы имеем возможность вырастить творческие
+                    идеи.
+                    Мы гордимся дружественными отношениями с нашими клиентами и всегда открыты для нового
+                    сотрудничества.
                 </div>
                 <div className="about-decoration-blockborder"/>
                 <span className="our-clients-text">
@@ -60,7 +64,6 @@ class About extends React.Component {
 function mapStateToProps(state) {
     return {
         partnersLogo: state.common.partnersLogo,
-        preloader: state.common.preloader
     }
 }
 

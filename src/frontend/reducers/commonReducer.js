@@ -6,22 +6,19 @@ import {
 
 
 const initialState = {
-    partnersLogo: [],
-    preloader: false
+    partnersLogo: []
 };
 
 
 export default function (state = initialState, action) {
     switch (action.type) {
         case GET_PARTNERS_LOGO_REQUEST: {
-            return {...state, preloader: true}
+            return {...state}
         }
         case GET_PARTNERS_LOGO_SUCCESS: {
-            return {...state, partnersLogo: action.payload, preloader: false}
+            return {...state, partnersLogo: action.payload}
         }
-        case GET_PARTNERS_LOGO_FAILURE:{
-            return {...state, preloader:false}
-        }
+
         default:
             return state;
     }
