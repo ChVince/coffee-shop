@@ -1,7 +1,14 @@
 [
   {
     "isPresentation":"true",
-    "section" : "weddings",
+    "section" : "other",
+    "title": "Умный дом “ЛОН”",
+    "url": "https://player.vimeo.com/video/206254550?title=0&byline=0&portrait=0"
+  },
+
+  {
+    "isPresentation":"false",
+    "section" : "other",
     "title": "Социальный ролик компьютерных игр 'Сделай свой выбор'",
     "url": "https://player.vimeo.com/video/173658205"
   },
@@ -19,7 +26,7 @@
   },
   {
     "isPresentation":"false",
-    "section" : "weddings",
+    "section" : "other",
     "title": "McHappy day 2016",
     "url": "https://player.vimeo.com/video/193248830"
   },
@@ -44,14 +51,21 @@
   {
     "isPresentation":"false",
     "section" : "other",
-    "title": "Умный дом “ЛОН”",
-    "url": "https://player.vimeo.com/video/203770635"
+    "title": "Arina Lukhanina",
+    "url": "https://player.vimeo.com/video/203730452"
   },
   {
     "isPresentation":"false",
     "section" : "other",
-    "title": "Arina Lukhanina",
-    "url": "https://player.vimeo.com/video/203730452"
+    "title": "Парк Развлечений Тарзания",
+    "url": "https://player.vimeo.com/video/198801025?color=ffffff"
+  },
+  {
+    "isPresentation":"false",
+    "section" : "weddings",
+    "title": "Wedding day V&D",
+    "url": " https://player.vimeo.com/video/196951154?color=ffffff"
   }
+
 
 ]
