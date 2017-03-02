@@ -29,6 +29,9 @@ class ToolBar extends React.Component {
                     <Nav>
                         <NavItem onClick={this.open}>Добавить видео</NavItem>
                     </Nav>
+                    <Nav pullRight>
+                        <NavItem onClick={this.props.logout}>Выйти</NavItem>
+                    </Nav>
                 </Navbar>
 
                 <Modal show={this.state.showModal} onHide={this.close}>
@@ -42,9 +45,7 @@ class ToolBar extends React.Component {
                         <Button onClick={this.close}>Закрыть</Button>
                     </Modal.Footer>
                 </Modal>
-                <Nav pullRight>
-                    <NavItem onClick={this.props.logout}>Выйти</NavItem>
-                </Nav>
+
             </div>
         )
     }

@@ -8,7 +8,6 @@
   src: url(./../fonts/Drugs.otf);
 }
 
-
 .about-wrapper {
   color: #8c8c8c;
   text-align: center;
@@ -26,7 +25,7 @@
 }
 
 .about-text {
-  font-family: Drugs, serif !important;
+  font-family: CGB, serif !important;
   color: #000000;
   text-align: center;
   font-size: 17px;
@@ -41,7 +40,7 @@
   width: 900px;
   height: auto;
   margin: auto;
-  padding-bottom:75px;
+  padding-bottom: 75px;
 }
 
 .partner-logo {
@@ -67,8 +66,19 @@
 
 }
 
-@media screen and (max-width: 1024px) and (max-width: 1366px) {
-
+@media screen and (max-width: 950px) {
+  .about-wrapper {
+  width: 90%;
+  }
+  .clients-logo{
+    width: 400px;
+  }
+  .partner-logo{
+    width: 80px;
+    height: 90px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 
 @media screen and (max-width: 768px) and (max-width: 1024px) {
@@ -89,26 +99,30 @@
 
 @media screen and(max-width: 360px) and (max-height: 640px) {
 
-
 }
 
 @media screen and(width: 320px) and (height: 568px) {
   .about-wrapper {
     width: 300px;
   }
-  .partner-logo{
+
+  .partner-logo {
     width: 35px;
     height: 55px;
   }
-  .about-text{
+
+  .about-text {
     font-size: 14px;
   }
-  .about-title, .our-clients-text{
+
+  .about-title, .our-clients-text {
     margin-top: 20px;
   }
+
   .our-clients-text {
     margin-bottom: 5px;
   }
+
   .about-decoration-blockborder {
     margin-top: 5px;
     margin-bottom: 5px;

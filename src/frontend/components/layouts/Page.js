@@ -13,7 +13,7 @@ class Page extends React.Component {
         return (
             <div className="page-layout">
                 <NavBar/>
-                {this.props.children}
+               {this.props.children}
                 <Footer/>
             </div>
         )

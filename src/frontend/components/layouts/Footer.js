@@ -5,7 +5,7 @@ class Footer extends React.Component {
     render() {
         return (
             <footer>
-             <div className="info-block-wrapper">
+     <div className="info-block-wrapper">
                  <div className="social-networks">
                         <a className="social-network" href="#">
                             <i className="fa fa-vk fa-2x"></i>
