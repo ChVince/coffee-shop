@@ -9,7 +9,6 @@ class ClipRoutes extends Routes {
             .catch(this.response(res));
     }
 
-
     removeClip(req, res, next) {
         const {id} = req.params;
         clipService.removeClip(id)

@@ -1,10 +1,23 @@
 {
-  "noVideoFound": "No video found",
-  "noVideosFound": "No videos found",
-  "notFound": "Not found",
-  "badRequest": "Bad request",
-  "stateResponse": {
-    "SUCCESS_STATE": "SUCCESS",
-    "FAIL_STATE": "ERR"
+  "commonService": {
+    "error": {
+      "internalServerError": "Internal server error",
+      "badRequest": "Bad Request"
+    }
+  },
+  "clipService": {
+    "error": {
+      "clipAlreadyExist": "Видео с таким названием уже существует!",
+      "noClipFound": "No clip found",
+      "noClipListFound": "No clip list found"
+    },
+    "success": {
+      "addClipSuccess": "Clip added successfully"
+    }
+  },
+  "userService": {
+    "error":{
+     "incorrectLoginOrPassword":"Incorrect login or password"
+    }
   }
 }

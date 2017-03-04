@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const Clip = require('./../../models/Clip');
-const Admin = require('./../../models/Admin');
-const videoTestData = require('./video.json');
-const adminTestData = require('./test-admin.json');
-const opts = require('../../options/dbOptions');
+const Clip = require('./../models/Clip');
+const Admin = require('./../models/Admin');
+const videoTestData = require('./json/clipList.json');
+const adminTestData = require('./json/test-admin.json');
+const opts = require('dbOptions');
 
 
 const mongo = {
@@ -43,8 +43,7 @@ function _fillAdminTest() {
         if (err) {
             return console.error(err);
         }
-
-        if (admin.length>0) {
+        if (admin.length > 0) {
             return;
         }
         new Admin(adminTestData).save();

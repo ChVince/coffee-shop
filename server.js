@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const express = require('express');
 const config = require('./webpack.config');
-const connect = require('./src/backend/common/db/db-connect');
+const connect = require('./src/backend/common/db-connect');
 const bodyParser = require('body-parser');
 
 

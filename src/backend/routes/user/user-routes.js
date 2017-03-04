@@ -11,12 +11,6 @@ class UserRoutes extends Routes {
             .then(this.response(res))
             .catch(this.response(res))
     }
-
-
-    logout(req, res, next) {
-
-    }
-
 }
 
 

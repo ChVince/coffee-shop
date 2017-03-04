@@ -2,7 +2,7 @@ const messages = require('../i18n/system.json');
 const Result = require('./../common/response');
 const Clip = require('../models/Clip');
 const commonService = require('../services/common-service');
-const {BAD_REQUEST} = require('../errors/error-codes');
+const {BAD_REQUEST, INTERNAL_SERVER_ERROR} = require('../errors/error-codes');
 
 
 class ClipService {
@@ -15,7 +15,7 @@ class ClipService {
         return new Promise((resolve, reject) => {
             Clip.findOne({title: clip.title}, (err, foundedClip) => {
                 if (foundedClip) {
-                    let result = new Result(messages.stateResponse.FAIL_STATE, 'Видео с таким названием уже существует!', BAD_REQUEST);
+                    let result = new Result(messages.clipService.error.clipAlreadyExist, BAD_REQUEST);
                     reject(result);
                 } else {
                     this._saveClip(resolve, reject, clip);
@@ -24,17 +24,19 @@ class ClipService {
         });
     }
 
+
     _saveClip(resolve, reject, clip) {
-        commonService._isDbConnect(reject);
+        commonService.isDbConnect(reject);
 
         clip.date = Date.now();
         clip.isPresentation = false;
+
         new Clip(clip).save((err) => {
             if (err) {
-                let result = new Result(messages.stateResponse.FAIL_STATE);
+                let result = new Result(messages.commonService.error.internalServerError, INTERNAL_SERVER_ERROR);
                 reject(result);
             } else {
-                let result = new Result(messages.stateResponse.SUCCESS_STATE,"Видео успешно добавлено!");
+                let result = new Result(messages.clipService.success.addClipSuccess);
                 resolve(result);
             }
         });
@@ -42,19 +44,23 @@ class ClipService {
 
     removeClip(id) {
         return new Promise((resolve, reject) => {
-            commonService._isDbConnect(reject);
+
+            commonService.isDbConnect(reject);
+
             Clip.findById(id, (err, clip) => {
                 if (err || !clip) {
-                    let result = new Result(messages.stateResponse.FAIL_STATE);
+
+                    let {message, statusCode}  = commonService.checkErrorType();
+                    let result = new Result(message, statusCode);
                     reject(result);
                 } else {
                     let result = new Promise((resolve, reject) => {
                         clip.remove((err) => {
                             if (err) {
-                                let result = new Result(messages.stateResponse.FAIL_STATE);
+                                let result = new Result(messages.commonService.error.internalServerError, INTERNAL_SERVER_ERROR);
                                 reject(result);
                             } else {
-                                let result = new Result(messages.stateResponse.SUCCESS_STATE, id);
+                                let result = new Result(id);
                                 resolve(result);
                             }
                         })
@@ -67,14 +73,16 @@ class ClipService {
 
     getPresentationClip() {
         return new Promise((resolve, reject) => {
-            commonService._isDbConnect(reject);
-            Clip.findOne({'isPresentation': 'true'}, (err, clip) => {
+            commonService.isDbConnect(reject);
+            Clip.findOne({isPresentation: true}, (err, clip) => {
                 if (err || !clip) {
-                    let result = new Result(messages.stateResponse.FAIL_STATE);
+
+                    let {message, statusCode}  = commonService.checkErrorType();
+                    let result = new Result(message, statusCode);
                     reject(result);
                 }
                 else {
-                    let result = new Result(messages.stateResponse.SUCCESS_STATE, clip);
+                    let result = new Result(clip);
                     resolve(result);
                 }
             })
@@ -84,15 +92,18 @@ class ClipService {
 
     changePresentationClip(id) {
         return new Promise((resolve, reject) => {
-            commonService._isDbConnect(reject);
+            commonService.isDbConnect(reject);
             this.getPresentationClip().then(result => {
                 let clip = result.body;
                 Clip.findById(id, (err, nextPresentationClip) => {
                     if (err || !nextPresentationClip) {
+
+                        let {message, statusCode}  = commonService.checkErrorType();
+                        let result = new Result(message, statusCode);
                         reject(result);
                     } else {
                         clip.isPresentation = false;
-                        clip.save((err, clip) => {
+                        clip.save((err) => {
                             if (!err) {
                                 nextPresentationClip.isPresentation = true;
                                 nextPresentationClip.save();
@@ -113,7 +124,7 @@ class ClipService {
         let perPage = perLimit ? Number(perLimit) : this.perPage;
         page = page || 0;
         return new Promise((resolve, reject) => {
-            commonService._isDbConnect(reject);
+            commonService.isDbConnect(reject);
             this._findAllVideos(resolve, reject, tag).sort({date: -1}).limit(perPage)
                 .skip(perPage * page);
         });
@@ -122,12 +133,11 @@ class ClipService {
     getClipListPageNumByTag(tag, limit) {
         let perPage = limit ? Number(limit) : this.perPage;
         return new Promise((resolve, reject) => {
-            commonService._isDbConnect(reject);
+            commonService.isDbConnect(reject);
             this._findAllVideos(resolve, reject, tag)
         }).then(incomingResult => {
             const pageNum = Math.ceil(incomingResult.body.length / perPage);
-            let result = new Result(messages.stateResponse.SUCCESS_STATE, pageNum);
-            return result;
+            return new Result(pageNum);
         })
     }
 
@@ -135,11 +145,11 @@ class ClipService {
     _findAllVideos(resolve, reject, tag) {
         return Clip.find({section: tag}, (err, clipList) => {
             if (!err) {
-                let result = new Result(messages.stateResponse.SUCCESS_STATE, clipList);
+                let result = new Result(clipList);
                 resolve(result);
             } else {
-
-                let result = new Result(messages.stateResponse.FAIL_STATE);
+                let {message, statusCode}  = commonService.checkErrorType();
+                let result = new Result(message,statusCode);
                 reject(result);
             }
         });
