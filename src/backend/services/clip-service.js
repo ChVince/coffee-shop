@@ -126,7 +126,7 @@ class ClipService {
         return new Promise((resolve, reject) => {
             commonService.isDbConnect(reject);
             this._findAllVideos(resolve, reject, tag).sort({date: -1}).limit(perPage)
-                .skip(perPage * page);
+                .skip(perPage * (page - 1));
         });
     }
 
@@ -149,7 +149,7 @@ class ClipService {
                 resolve(result);
             } else {
                 let {message, statusCode}  = commonService.checkErrorType();
-                let result = new Result(message,statusCode);
+                let result = new Result(message, statusCode);
                 reject(result);
             }
         });

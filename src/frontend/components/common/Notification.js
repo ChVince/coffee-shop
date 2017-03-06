@@ -9,7 +9,7 @@ class Notification extends React.Component {
     render() {
         let error = this.props.error;
         let result = null;
-        if (error.state == "ERR") {
+        if (!$.isEmptyObject(error)) {
             result = <div className="alert alert-danger custom-error">
                 <span>{error.body}</span>
             </div>

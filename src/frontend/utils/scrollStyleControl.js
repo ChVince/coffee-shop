@@ -4,9 +4,6 @@ export default function scrollControl() {
     let socialNetwork = document.getElementById('social-network-id');
 
 
-
-
-
     let scrollHeight = document.documentElement.clientHeight;
     let clipTabsSourceBottom = 230;
 

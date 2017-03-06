@@ -7,7 +7,9 @@ const {BAD_REQUEST} = require('../errors/error-codes');
 
 class UserService {
     checkLoginForm(login, password) {
+
         return new Promise((resolve, reject) => {
+            commonService.isDbConnect(reject);
             this._checkLoginField('login', login, {resolve: resolve, reject: reject});
         }).then(() => {
             return new Promise((resolve, reject) => {

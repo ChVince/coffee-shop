@@ -1,7 +1,7 @@
 import React from 'react'
 
 import {bindActionCreators} from 'redux'
-import {getPartnersLogo} from '../actions'
+import {getPartnersLogo} from '../actions/common'
 import {connect} from 'react-redux'
 
 

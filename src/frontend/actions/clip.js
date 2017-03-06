@@ -1,22 +1,21 @@
 import * as actions from '../constants/asyncActionTypes'
-import {ACCEPT_ADD_CLIP_FORM_CHANGES, CLEAR_ADD_CLIP_FORM} from '../constants/syncActionTypes'
 import {
     CLIP_LIST_URL,
     PRESENTATION_CLIP_URL,
     CLIP_URL,
     CLIP_LIST_NUM_URL,
-    PARTNERS_LOGO_URL
 } from './../constants/URLs'
 import axios from 'axios'
 
 
 function _dispatchClipListPromise(dispatch, tag, activePage, limit = null) {
-    let serverNextPage = activePage - 1;
+
+
     dispatch({
         type: actions.GET_CLIP_LIST_REQUEST,
     });
 
-    axios.get(CLIP_LIST_URL + tag + '/' + serverNextPage, {
+    axios.get(CLIP_LIST_URL + tag + '/' + activePage, {
         params: {
             limit: limit
         }
@@ -26,7 +25,7 @@ function _dispatchClipListPromise(dispatch, tag, activePage, limit = null) {
                 type: actions.GET_CLIP_LIST_SUCCESS,
                 payload: {
                     clipList: response.data.entity.body,
-                    page: serverNextPage,
+                    page: activePage,
                 }
             })
         })
@@ -45,6 +44,7 @@ export function getClipList(tag, activePage, limit = null) {
         _dispatchClipListPromise(dispatch, tag, activePage, limit)
     }
 }
+
 
 export function getPresentationClip() {
     return (dispatch) => {
@@ -122,22 +122,6 @@ export function addClip(clip) {
 }
 
 
-export function validateAddClipForm(value, name) {
-    let isValid = false;
-    if (value.length > 0) {
-        isValid = true
-    }
-
-    return {
-        type: ACCEPT_ADD_CLIP_FORM_CHANGES,
-        payload: {
-            name: name,
-            isValid: isValid
-        }
-    }
-}
-
-
 export function removeClip(id) {
     return (dispatch) => {
         dispatch({
@@ -190,37 +174,3 @@ export function getClipListPageNumByTag(tag, limit = null) {
             })
     }
 }
-
-
-export function getPartnersLogo() {
-    return (dispatch) => {
-        dispatch({
-            type: actions.GET_PARTNERS_LOGO_REQUEST
-        });
-
-        axios.get(PARTNERS_LOGO_URL)
-            .then(response => {
-                dispatch({
-                    type: actions.GET_PARTNERS_LOGO_SUCCESS,
-                    payload: response.data.entity.body
-                })
-            })
-            .catch(error => {
-                let response = error.response;
-                dispatch({
-                    type: actions.GET_PARTNERS_LOGO_FAILURE,
-                    payload: response.data.entity
-                })
-            })
-    }
-}
-
-
-export function clearAddClipForm() {
-    return {
-        type: CLEAR_ADD_CLIP_FORM
-    }
-}
-
-
-

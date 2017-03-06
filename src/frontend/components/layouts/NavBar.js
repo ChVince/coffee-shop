@@ -1,8 +1,10 @@
 import React from 'react'
-import {Nav, NavItem, Button} from 'react-bootstrap'
+import * as messages from '../../i18n/msg_ru.json'
 import {Link,IndexLink} from 'react-router'
 import {MENU_URLs} from '../../utils/innerURLs'
+
 require('../../styles/refactoredStyles/navbar.less');
+
 
 
 class MenuButtons extends React.Component {
@@ -12,7 +14,8 @@ class MenuButtons extends React.Component {
     }
 
     _generateTabs() {
-        let menuTabs = ['Главная', 'Портфолио', 'Контакты', 'О нас'];
+        let header = messages.header;
+        let menuTabs = [header.home, header.portfolio.index, header.contacts, header.about];
         let menuHref = [MENU_URLs.HOME_URL, MENU_URLs.PORTFOLIO, MENU_URLs.CONTACTS_URL, MENU_URLs.ABOUT_URL];
         let tabs = [];
         for (let i = 0; i < menuTabs.length ; i++) {
@@ -23,6 +26,7 @@ class MenuButtons extends React.Component {
                     </IndexLink>
                 </li>
             } else {
+                let portfolioTagList = header.portfolio;
                 tabs[i] = <li key={i}>
                     <Link  to={menuHref[i].INDEX} activeClassName='active-page-button' className="btn-menu-button">
                         {menuTabs[i]}
@@ -30,17 +34,17 @@ class MenuButtons extends React.Component {
                     <ul className="portfolio-header-tabs">
                         <li>
                             <Link activeClassName='active-page-button' className="btn-menu-button dropdown-button" to={menuHref[i].WEDDINGS_URL}>
-                                    Свадьбы
+                                {portfolioTagList.weddings}
                             </Link>
                         </li>
                         <li>
                             <Link activeClassName='active-page-button' className="btn-menu-button dropdown-button" to={menuHref[i].VOICE_URL}>
-                                    Озвучка
+                                {portfolioTagList.voice}
                             </Link>
                         </li>
                         <li>
                             <Link activeClassName='active-page-button' className="btn-menu-button dropdown-button"  to={menuHref[i].OTHER_URL}>
-                                    Другое
+                                {portfolioTagList.commercialProjects}
                             </Link>
                         </li>
                     </ul>

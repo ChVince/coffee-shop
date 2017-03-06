@@ -1,5 +1,4 @@
 import {
-    GET_PARTNERS_LOGO_FAILURE,
     GET_PARTNERS_LOGO_REQUEST,
     GET_PARTNERS_LOGO_SUCCESS
 } from '../constants/asyncActionTypes'

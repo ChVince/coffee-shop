@@ -1,6 +1,6 @@
 import React from 'react'
 import Clip from './Clip'
-import Notification from '../common/Notification'
+
 
 class ClipLayout extends React.Component {
     constructor(props) {

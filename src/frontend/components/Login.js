@@ -1,6 +1,6 @@
 import React from 'react'
 import {bindActionCreators} from 'redux'
-import {login} from '../actions/admin'
+import {login} from '../actions/login'
 import {connect} from 'react-redux'
 
 

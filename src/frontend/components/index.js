@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import WelcomePage from './welcome/WelcomePage';
+import WelcomePage from './WelcomePage';
 import About from './About'
 import {Provider} from 'react-redux'
 import createStoreForPage from '../store'
 import {Router, Route, browserHistory, IndexRoute, IndexRedirect, Redirect} from 'react-router'
 import Page from './layouts/Page'
-import ClipBar from './video'
+import ClipBar from './clipList'
 import Contacts from './Contacts'
 import AdminPage from './admin'
 import Login from './Login'

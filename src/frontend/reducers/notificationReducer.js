@@ -17,13 +17,11 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
         case GET_CLIP_LIST_FAILURE:
-        case ADD_CLIP_FAILURE:
         case GET_PRESENTATION_CLIP_FAILURE:
         case GET_CLIP_LIST_NUM_FAILURE:
         case GET_PARTNERS_LOGO_FAILURE:
         case CHANGE_PRESENTATION_CLIP_FAILURE:
-        case REMOVE_CLIP_FAILURE:
-        case ADD_CLIP_SUCCESS: {
+        case REMOVE_CLIP_FAILURE: {
             return {...state, notification: action.payload}
         }
 

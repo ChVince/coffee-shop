@@ -4,17 +4,18 @@ import {bindActionCreators} from 'redux'
 import cookie from '../../utils/cookie'
 import {
     addClip,
-    clearAddClipForm,
-    validateAddClipForm,
     removeClip,
     changePresentationClip,
     getClipList,
     getClipListPageNumByTag
-} from '../../actions/index'
-
+} from '../../actions/clip'
+import {
+    clearAddClipForm,
+    validateAddClipForm,
+} from '../../actions/admin'
 
 import ToolBar from './ToolBar'
-import Clip from '../video/Clip'
+import Clip from '../clipList/Clip'
 
 import {Button, Pagination} from 'react-bootstrap'
 
@@ -71,7 +72,7 @@ class AdminPage extends React.Component {
     }
 
     render() {
-        let activePage = this.props.page + 1;
+        let activePage = this.props.page;
         let clipList = [];
         if (this.props.adminClipList && this.props.adminClipList.length > 0) {
             clipList = this.props.adminClipList.map((clip, index) => {

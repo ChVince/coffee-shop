@@ -3,8 +3,9 @@ import * as actions from '../constants/asyncActionTypes'
 
 const initialState = {
     clipList: [],
-    page: 0,
-    pageNum: 0
+    presentationClip: {},
+    page:1,
+    pageNum: 1
 };
 
 export default  function (state = initialState, action) {
@@ -13,11 +14,11 @@ export default  function (state = initialState, action) {
         case actions.ADD_CLIP_REQUEST:
         case actions.GET_PRESENTATION_CLIP_REQUEST:
         case actions.GET_CLIP_LIST_NUM_REQUEST:
+        case actions.CHANGE_PRESENTATION_CLIP_REQUEST:
         case actions.GET_CLIP_LIST_REQUEST:
         case actions.REMOVE_CLIP_REQUEST: {
             return {...state}
         }
-
         case actions.ADD_CLIP_SUCCESS: {
             return {...state}
         }
@@ -28,9 +29,6 @@ export default  function (state = initialState, action) {
                 page: action.payload.page
             }
         }
-        case actions.GET_PRESENTATION_CLIP_SUCCESS: {
-            return {...state, presenatationClip: action.payload}
-        }
         case actions.GET_CLIP_LIST_NUM_SUCCESS: {
             return {...state, pageNum: action.payload}
         }
@@ -40,6 +38,12 @@ export default  function (state = initialState, action) {
                 return item._id != removeClipId
             });
             return {...state, clipList: newClipList}
+        }
+        case actions.GET_PRESENTATION_CLIP_SUCCESS: {
+            return {...state, presentationClip: action.payload}
+        }
+        case actions.CHANGE_PRESENTATION_CLIP_SUCCESS: {
+            return {...state, presenatationClip: action.payload}
         }
         default :
             return state;

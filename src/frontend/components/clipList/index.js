@@ -1,12 +1,13 @@
 import React from 'react'
-import {NavItem, Nav, Pagination} from 'react-bootstrap'
+import {Pagination} from 'react-bootstrap'
 import {Link} from 'react-router';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {getClipList, getClipListPageNumByTag} from '../../actions/index'
-import ClipLayout from '../video/ClipLayout'
+import {getClipList, getClipListPageNumByTag} from '../../actions/clip'
+import ClipLayout from './ClipLayout'
 import scrollControl from '../../utils/scrollStyleControl';
 import Notification from '../common/Notification'
+import * as messages from '../../i18n/msg_ru.json'
 
 require('../../styles/refactoredStyles/clipList.less');
 
@@ -32,7 +33,8 @@ class ClipBar extends React.Component {
     };
 
     render() {
-        let activePage = this.props.page + 1;
+        let activePage = this.props.page;
+        let portfolio = messages.header.portfolio;
         return (
             <div className="clip-bar">
                 <Notification error={this.props.notification}/>
@@ -42,21 +44,21 @@ class ClipBar extends React.Component {
                             <Link activeClassName='active-page-button-clip-list'
                                   className="btn-menu-button btn-menu-button-clip-list"
                                   to='/portfolio/weddings'>
-                                Свадьбы
+                                {portfolio.weddings}
                             </Link>
                         </li>
                         <li >
                             <Link activeClassName='active-page-button-clip-list'
                                   className="btn-menu-button btn-menu-button-clip-list"
                                   to='/portfolio/voice'>
-                                Озвучка
+                                {portfolio.voice}
                             </Link>
                         </li>
                         <li >
                             <Link activeClassName='active-page-button-clip-list'
                                   className="btn-menu-button btn-menu-button-clip-list"
-                                  to='/portfolio/other'>
-                                Другое
+                                  to='/portfolio/other#'>
+                                {portfolio.commercialProjects}
                             </Link>
                         </li>
                     </ul>
@@ -64,19 +66,19 @@ class ClipBar extends React.Component {
                 <ul id="slide-contacts-id" className="slide-contacts">
                     <li>
                         <a className="social-network" href="#">
-                            <i className="fa fa-vk fa-2x"></i>
+                            <i className="fa fa-vk "></i>
                         </a>
                     </li>
 
                     <li>
                         <a className="social-network" href="#">
-                            <i className="fa fa-facebook fa-2x" aria-hidden="true"></i>
+                            <i className="fa fa-facebook" aria-hidden="true"></i>
                         </a>
                     </li>
 
                     <li>
                         <a className="social-network" href="#">
-                            <i className="fa fa-instagram fa-2x" aria-hidden="true"></i>
+                            <i className="fa fa-instagram " aria-hidden="true"></i>
                         </a>
                     </li>
                 </ul>

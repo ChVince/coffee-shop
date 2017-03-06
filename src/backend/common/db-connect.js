@@ -3,7 +3,7 @@ const Clip = require('./../models/Clip');
 const Admin = require('./../models/Admin');
 const videoTestData = require('./json/clipList.json');
 const adminTestData = require('./json/test-admin.json');
-const opts = require('dbOptions');
+const opts = require('./dbOptions');
 
 
 const mongo = {
