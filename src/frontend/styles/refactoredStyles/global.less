@@ -1,25 +1,60 @@
+@keyframes softRender {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
-*{
+@keyframes softRender-2 {
+  0% {
+    background-color: #000000;
+  }
+  25% {
+    background-color: #434343;
+  }
+  50% {
+    background-color: #7b7b7b
+  }
+  75% {
+    background-color: #c1c1c1
+  }
+  100% {
+    background-color: #ffffff
+  }
+}
+
+* {
   font-family: 'Source Code Pro', monospace;
 }
 
-
-html, body, #root,.page-layout{
+html, body, #root, .page-layout {
   height: 100%;
 }
 
 .error {
   margin-top: -10px;
   margin-bottom: 20px;
-  display:block;
+  display: block;
   text-align: center;
   background-color: rgba(211, 26, 26, 0.25);
   color: #b22222;
 }
+
 .success {
   margin-top: -10px;
   margin-bottom: 20px;
-  display:block;
+  display: block;
   text-align: center;
   background-color: rgba(56, 211, 139, 0.25);
   color: #4eb256;

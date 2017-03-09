@@ -7,7 +7,9 @@ import {getClipList, getClipListPageNumByTag} from '../../actions/clip'
 import ClipLayout from './ClipLayout'
 import scrollControl from '../../utils/scrollStyleControl';
 import Notification from '../common/Notification'
-import * as messages from '../../i18n/msg_ru.json'
+import translate from '../../utils/translate'
+import * as _ from 'lodash'
+
 
 require('../../styles/refactoredStyles/clipList.less');
 
@@ -29,36 +31,44 @@ class ClipBar extends React.Component {
     }
 
     _handlePagination = (eventkey) => {
+        window.scrollTo(0, 0);
         this.props.getClipList(this.props.tag, eventkey)
     };
 
+
+    _handleSwitchClipListByTag = () => {
+        window.scrollTo(0, 0);
+    };
+
+
     render() {
         let activePage = this.props.page;
-        let portfolio = messages.header.portfolio;
+        let strings = this.props.strings;
         return (
             <div className="clip-bar">
                 <Notification error={this.props.notification}/>
+
                 <div id="cilp-tabs-wrapper">
                     <ul className="clip-tabs">
                         <li>
                             <Link activeClassName='active-page-button-clip-list'
                                   className="btn-menu-button btn-menu-button-clip-list"
-                                  to='/portfolio/weddings'>
-                                {portfolio.weddings}
+                                  to='/portfolio/weddings' onClick={this._handleSwitchClipListByTag}>
+                                {strings.portfolio.weddings}
                             </Link>
                         </li>
                         <li >
                             <Link activeClassName='active-page-button-clip-list'
                                   className="btn-menu-button btn-menu-button-clip-list"
-                                  to='/portfolio/voice'>
-                                {portfolio.voice}
+                                  to='/portfolio/voice' onClick={this._handleSwitchClipListByTag}>
+                                {strings.portfolio.voice}
                             </Link>
                         </li>
                         <li >
                             <Link activeClassName='active-page-button-clip-list'
                                   className="btn-menu-button btn-menu-button-clip-list"
-                                  to='/portfolio/other#'>
-                                {portfolio.commercialProjects}
+                                  to='/portfolio/other' onClick={this._handleSwitchClipListByTag}>
+                                {strings.portfolio.commercialProjects}
                             </Link>
                         </li>
                     </ul>
@@ -90,9 +100,9 @@ class ClipBar extends React.Component {
                             first
                             last
                             bsSize="small"
-                                    items={this.props.pageNum}
-                                    activePage={activePage}
-                                    onSelect={this._handlePagination}
+                            items={this.props.pageNum}
+                            activePage={activePage}
+                            onSelect={this._handlePagination}
                         />
                     </div>
                 </div>
@@ -105,9 +115,9 @@ class ClipBar extends React.Component {
                             first
                             last
                             bsSize="small"
-                                    items={this.props.pageNum}
-                                    activePage={activePage}
-                                    onSelect={this._handlePagination}
+                            items={this.props.pageNum}
+                            activePage={activePage}
+                            onSelect={this._handlePagination}
                         />
                     </div>
                 </div>
@@ -124,8 +134,8 @@ function _parseLastPathURL(url) {
 ClipBar.propTypes = {
     clipList: React.PropTypes.array.isRequired,
     pageNum: React.PropTypes.number.isRequired,
-    page: React.PropTypes.number.isRequired
-
+    page: React.PropTypes.number.isRequired,
+    strings: React.PropTypes.object
 };
 
 
@@ -145,5 +155,10 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
+const decorators = _.flow([
+    connect(mapStateToProps, mapDispatchToProps),
+    translate('ClipBar')
+]);
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClipBar);
+
+export default decorators(ClipBar);

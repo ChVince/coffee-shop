@@ -1,8 +1,10 @@
 import * as actions from '../constants/asyncActionTypes'
+import {CHANGE_LANGUAGE} from '../constants/syncActionTypes'
 import {
-    PARTNERS_LOGO_URL
+    PARTNERS_LOGO_URL,
 } from './../constants/URLs'
 import axios from 'axios'
+import cookie from '../utils/cookie'
 
 
 
@@ -30,4 +32,9 @@ export function getPartnersLogo() {
     }
 }
 
-
+export function changeLanguage (lang){
+    cookie.setCookie('lang',lang);
+    return{
+        type:CHANGE_LANGUAGE
+    }
+}

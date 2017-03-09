@@ -7,7 +7,7 @@
   width: 100%;
   height: 85%;
   padding-top: 3%;
-
+  animation: softRender .3s 1 ease;
 }
 
 .contacts-wrapper {
@@ -16,7 +16,7 @@
   width: 750px;
   height: 400px;
   margin: auto;
-margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 
 .contact-text {
@@ -73,19 +73,26 @@ margin-bottom: 50px;
   line-height: 40px;
 }
 
-.phone-icon, .address-icon, .mail-icon {
+.phone-icon, .address-icon, .mail-icon ,.vk-icon{
   float: left;
   margin: auto;
   display: inline-block;
 }
 
-.mail-icon {
+.mail-icon,.vk-icon {
   line-height: 95px;
+}
+.vk-icon{
+  .fa {
+    font-size: 30px;
+  }
+
 }
 
 .address-text-wrapper {
   color: #5c5c5c;
   font-family: CGB, serif !important;
+  font-size: 16px;
   font-weight: bold;
   display: inline-block;
   width: 50%;
@@ -122,7 +129,12 @@ margin-bottom: 50px;
   padding-top: 5%;
   margin-left: 15%;
   display: inline-block;
+  & a {
+    color: #5c5c5c !important;
+  }
 }
+
+
 
 .contact-mail .contact-text-wrapper {
   padding-top: 10%;
@@ -209,9 +221,9 @@ padding-left:15px
 }
 
 .contacts-border {
-  background: -webkit-radial-gradient(closest-side, rgb(157, 29, 31), rgba(255, 255, 255, 0));
-  background: radial-gradient(closest-side, rgb(157, 29, 31), rgba(255, 255, 255, 0));
-  width: 2px;
+  background: -webkit-radial-gradient( rgb(157, 29, 31), rgba(255, 255, 255, 0));
+  background: radial-gradient( rgb(157, 29, 31), rgba(255, 255, 255, 0));
+  width: 1px;
   height: 60%;
   display: inline-block;
 }

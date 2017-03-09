@@ -8,15 +8,21 @@
   src: url(./../fonts/Drugs.otf);
 }
 
+@font-face {
+  font-family: HelveticaNeue ;
+  src: url(./../fonts/HelveticaNeue.otf);
+}
+
 .about-wrapper {
   color: #8c8c8c;
   text-align: center;
-  width: 950px;
+  width: 1020px;
   margin: auto;
+  animation: softRender .3s 1 ease;
 }
 
 .about-title, .our-clients-text {
-  font-family: CGB, serif !important;
+  font-family: HelveticaNeue, serif !important;
   margin-top: 50px;
   font-weight: bold;
   color: #4b4b4b;
@@ -33,7 +39,64 @@
 
 .our-clients-text {
   margin-top: 0;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
+}
+
+.production-items {
+  display: inline-flex !important;
+  width: 1020px;
+  margin: auto;
+  height: 250px;
+  margin-bottom: 100px;
+
+  .item {
+    background-color: rgba(255, 255, 255, 0.3);
+    display: inline-table;
+    width: 250px;
+    height: 250px;
+
+    .item-icon {
+      width: 50%;
+      margin: auto;
+      text-align: center;
+      color: #757575;
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+    .item-title {
+      font-size: 16px;
+      color: rgb(72, 72, 72);
+      text-transform: uppercase;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  & span {
+    font-family: HelveticaNeue, serif !important;
+  }
+  & ul {
+    margin-top: 20px;
+    text-align: left;
+    color: rgb(27, 27, 27);
+  }
+  & li {
+    font-family: CGB, serif !important;
+  }
+  & .fa{
+    color: #4b4949;
+  }
+
+  & .item-border {
+    display: inline-table;
+    width: 1px;
+    margin-left: 2px;
+    margin-right: 2px;
+    height: 250px;
+    background-color: rgba(195, 195, 195, 0.98);
+    background: -webkit-radial-gradient( rgba(195, 195, 195, 0.98), rgba(255, 255, 255, 0));
+    background: radial-gradient(rgba(195, 195, 195, 0.98), rgba(255, 255, 255, 0));
+  }
+
 }
 
 .clients-logo {
@@ -68,12 +131,14 @@
 
 @media screen and (max-width: 950px) {
   .about-wrapper {
-  width: 90%;
+    width: 90%;
   }
-  .clients-logo{
+
+  .clients-logo {
     width: 400px;
   }
-  .partner-logo{
+
+  .partner-logo {
     width: 80px;
     height: 90px;
     margin-left: 10px;

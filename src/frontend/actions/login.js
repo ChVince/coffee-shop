@@ -6,7 +6,7 @@ import cookie from '../utils/cookie'
 import axios from 'axios'
 
 
-function _validateInputLoginForm(login, password) {
+function _validateInputLoginForm(login, password,strings) {
     let newValidate = {
         login: {},
         password: {}
@@ -14,19 +14,19 @@ function _validateInputLoginForm(login, password) {
 
     if (login.length == 0) {
         newValidate.login.err = true;
-        newValidate.login.msg = 'Введите логин'
+        newValidate.login.msg = strings.err.emptyLogin
     }
 
     if (password.length == 0) {
         newValidate.password.err = true;
-        newValidate.password.msg = 'Введите пароль'
+        newValidate.password.msg = strings.err.emptyPassword
     }
     return newValidate;
 }
 
 
-export function login(login, password) {
-    let newValidate = _validateInputLoginForm(login, password);
+export function login(login, password,strings) {
+    let newValidate = _validateInputLoginForm(login, password,strings);
 
     if (newValidate.login.err || newValidate.password.err) {
         return {

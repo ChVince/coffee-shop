@@ -18,7 +18,7 @@ export default function scrollControl() {
             clipTabs.classList.add('fixed-clip-tabs');
         }
 
-      if (slideContacts.classList.contains('hide-slide-contacts') && (scrollHeight+ window.pageYOffset) < socialNetworkSourceTop ) {
+      if (slideContacts.classList.contains('hide-slide-contacts') && (scrollHeight + window.pageYOffset) < socialNetworkSourceTop ) {
             slideContacts.classList.remove('hide-slide-contacts');
         } else if ((scrollHeight+ window.pageYOffset) > socialNetworkSourceTop ) {
             slideContacts.classList.add('hide-slide-contacts');
