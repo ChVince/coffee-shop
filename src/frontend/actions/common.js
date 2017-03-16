@@ -7,8 +7,6 @@ import axios from 'axios'
 import cookie from '../utils/cookie'
 
 
-
-
 export function getPartnersLogo() {
     return (dispatch) => {
         dispatch({
@@ -32,9 +30,9 @@ export function getPartnersLogo() {
     }
 }
 
-export function changeLanguage (lang){
-    cookie.setCookie('lang',lang);
-    return{
-        type:CHANGE_LANGUAGE
+export function changeLanguage(lang) {
+    cookie.setCookie('lang', lang);
+    return {
+        type: CHANGE_LANGUAGE
     }
 }

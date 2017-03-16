@@ -16,7 +16,7 @@ class Page extends React.Component {
         return (
             <div className="page-layout">
                 <NavBar onChangeLanguage={this.props.changeLanguage}/>
-                {this.props.children}
+               {this.props.children}
                 <Footer/>
             </div>
         )
@@ -54,3 +54,8 @@ function mapStateToProps(state) {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page);
+
+
+
+
+

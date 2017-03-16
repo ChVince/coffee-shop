@@ -1,7 +1,7 @@
 
 .welcome-page {
   background-color: #000000;
-  height: 85%;
+
   animation: softRender .5s 1 ease;
 }
 
@@ -13,16 +13,20 @@
 }
 
 
-@media screen and (max-width: 1024px) and (max-width: 1366px) {
+
+
+
+@media screen and (max-width: 1200px) {
+  .welcome-page {
+    height: 85%;
+  }
+}
+
+@media screen  and (min-width: 1200px) {
   .welcome-page {
     background-color: #000000;
-    height: 63%;
+    height: 82%;
   }
 }
 
 
-@media screen and (max-width: 414px) and (max-width: 736px) {
-  .welcome-page {
-    height: 54%;
-  }
-}

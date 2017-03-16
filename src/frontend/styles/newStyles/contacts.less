@@ -1,0 +1,169 @@
+@font-face {
+  font-family: HelveticaNeue ;
+  src: url(./../fonts/HelveticaNeue.otf);
+}
+
+.contact-text {
+  span {
+    font-family: HelveticaNeue, serif !important;
+  }
+  text-align: center;
+  margin-top: 120px;
+  font-weight: bold;
+  color: #4b4b4b;
+  font-size: 30px;
+}
+.contacts-wrapper{
+ height: 70%;
+  min-height: 500px;
+  .contacts {
+    margin-top: 60px;
+    .contact {
+      height: 65px;
+      margin-bottom: 40px;
+    }
+    .fa {
+      font-size: 65px;
+    }
+  }
+}
+
+.contacts-border {
+  background: -webkit-radial-gradient(rgb(157, 29, 31), rgba(255, 255, 255, 0));
+  background: radial-gradient(rgb(157, 29, 31), rgba(255, 255, 255, 0));
+  width: 1px;
+  height: 200px;
+  margin: auto;
+}
+
+.icon-address {
+  .fa {
+    font-size: 52px!important;
+  }
+}
+
+.icon-mail {
+  .fa {
+    padding-top: 13px;
+    font-size: 40px!important;
+  }
+}
+
+.icon-vk {
+  .fa {
+    padding-top: 13px;
+    font-size: 40px!important;
+  }
+}
+
+.contact-text-wrapper {
+  text-align: center;
+  padding-top: 24px;
+  span{
+    font-family: HelveticaNeue, serif !important;
+  }
+
+}
+
+.mail-text-wrapper, .vk-text-wrapper {
+  padding-left: 25px;
+}
+
+.address-text-wrapper {
+  padding-top: 10px;
+  span {
+    line-height: 2px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contacts-wrapper {
+   height: 85%;
+  }
+  .contact-text{
+    font-size: 28px;
+  }
+  .contact{
+    margin-bottom: 20px!important;
+  }
+  .contacts{
+    margin-top: 90px;
+  }
+  .contact-text-wrapper {
+    text-align: left;
+    padding-top: 15px;
+  }
+
+  .icon {
+    .fa {
+      font-size: 40px!important;
+    }
+  };
+
+  .icon-address {
+    .fa {
+      font-size: 33px!important;
+    }
+  }
+
+  .icon-mail {
+    .fa {
+      font-size: 23px!important;
+    }
+  }
+
+  .icon-vk {
+    .fa {
+      font-size: 23px!important;
+    }
+  }
+  .mail-text-wrapper, .vk-text-wrapper {
+    padding-left: 15px;
+  }
+  .address-text-wrapper{
+    padding-top: 5px;
+  }
+
+}
+
+@media screen  and (max-width: 500px){
+  .contacts-wrapper {
+    height: 90%;
+  }
+}
+
+@media screen  and (max-height: 650px){
+ .contact-text{
+   margin-top: 60px;
+ }
+}
+
+@media screen  and (max-width: 400px){
+  .contact-text{
+    font-size: 21px;
+  }
+  .contact-text-wrapper{
+    padding-left: 20px;
+    padding-right: 0;
+    span{
+      font-size: 12px;
+    }
+  }
+
+
+  .icon {
+   padding-right:2px ;
+  };
+
+  .icon-address {
+    padding-right:2px ;
+  }
+
+  .icon-mail {
+    padding-right:2px ;
+  }
+
+  .icon-vk {
+    padding-right:2px ;
+  }
+}

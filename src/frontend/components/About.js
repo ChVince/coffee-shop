@@ -7,7 +7,8 @@ import translate from '../utils/translate'
 import * as _ from 'lodash'
 
 
-require('../styles/refactoredStyles/about.less');
+/*require('../styles/refactoredStyles/about.less');*/
+require('../styles/newStyles/about.less');
 
 class About extends React.Component {
 
@@ -29,7 +30,12 @@ class About extends React.Component {
         if (this.props.partnersLogo && this.props.partnersLogo.length > 0) {
             partnersLogo = this.props.partnersLogo.map((item, index) => {
                 return (
-                    <div className="partner-logo" key={index} style={{backgroundImage: 'url(' + item.url + ')'}}/>
+                    <img className="
+                    col-lg-3
+                    col-md-3
+                    col-sm-3
+                    col-xs-3
+                     partner-logo img-responsive" key={index} src={item.url} />
                 )
             })
         }
@@ -37,19 +43,60 @@ class About extends React.Component {
         let productionItems = strings.productionItems;
 
         return (
-            <div className="about-wrapper">
-                  <span className="about-title">
+            <div className="container">
+                <div className="row">
+                    <div className="about-title
+                    col-lg-offset-4 col-lg-4
+                    col-md-offset-4 col-md-4
+                    col-sm-offset-4 col-sm-4
+                    col-xs-offset-4 col-xs-4
+">
+                     <span>
                       {strings.index}
                      </span>
-                <div className="about-decoration-blockborder"/>
-                <div className="about-text">
-                    {strings.text}
+                    </div>
                 </div>
-                <div className="about-decoration-blockborder"/>
+                <div className="row">
+                    <div className="
 
+                     col-lg-offset-1 col-lg-10
+                     col-md-offset-1 col-md-10
+                     col-sm-offset-1 col-sm-10
+                     col-xs-offset-1 col-xs-10
 
-                <div className="production-items">
-                    <div className="item">
+                    about-decoration-blockborder"/>
+                </div>
+
+                <div className="row">
+                    <div className="about-text
+                    col-lg-offset-2 col-lg-8
+                    col-md-offset-2 col-md-8
+                    col-sm-offset-2 col-sm-8
+                    col-xs-offset-2 col-xs-8
+">
+                     <span>
+                      {strings.text}
+                     </span>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="
+
+                     col-lg-offset-1 col-lg-10
+                     col-md-offset-1 col-md-10
+                     col-sm-offset-1 col-sm-10
+                     col-xs-offset-1 col-xs-10
+
+                    about-decoration-blockborder"/>
+                </div>
+
+                <div className="row">
+                    <div className="item
+                     col-lg-3
+                     col-md-3
+                     col-sm-3
+                     col-xs-6">
+
                         <div className="item-icon">
                            <span>
                             <i className="fa fa-industry fa-4x" aria-hidden="true"></i>
@@ -68,8 +115,11 @@ class About extends React.Component {
                             </ul>
                         </div>
                     </div>
-                    <div className="item-border"/>
-                    <div className="item">
+                    <div className="item
+                     col-lg-3
+                     col-md-3
+                     col-sm-3
+                     col-xs-6">
                         <div className="item-icon">
                            <span>
                             <i className="fa fa-video-camera fa-4x" aria-hidden="true"></i>
@@ -88,13 +138,17 @@ class About extends React.Component {
                             </ul>
                         </div>
                     </div>
-                    <div className="item-border"/>
-                    <div className="item">
+                    <div className="item
+                     col-lg-3
+                     col-md-3
+                     col-sm-3
+                     col-xs-6">
                         <div className="item-icon">
                            <span>
                             <i className="fa fa-wrench fa-4x" aria-hidden="true"></i>
                         </span>
                         </div>
+
                         <div className="item-title">
                             <span>{productionItems.postproduction[0]}</span>
                         </div>
@@ -106,13 +160,17 @@ class About extends React.Component {
                             </ul>
                         </div>
                     </div>
-                    <div className="item-border"/>
-                    <div className="item">
+                    <div className="item
+                     col-lg-3
+                     col-md-3
+                     col-sm-3
+                     col-xs-6">
                         <div className="item-icon">
                            <span>
                             <i className="fa fa-microphone fa-4x" aria-hidden="true"></i>
                         </span>
                         </div>
+
                         <div className="item-title">
                             <span>{productionItems.voice[0]}</span>
                         </div>
@@ -124,16 +182,30 @@ class About extends React.Component {
                             </ul>
                         </div>
                     </div>
-
                 </div>
 
-                <span className="our-clients-text">
+
+                <div className="row">
+                    <div className="our-clients-title
+                     col-lg-12
+                     col-md-12
+                     col-sm-12
+                     col-xs-12
+">
+                       <span >
                     {strings.ourClients}
                      </span>
+                    </div>
+                </div>
+
                 <div className="clients-logo">
+
                     {partnersLogo}
+
                 </div>
             </div>
+
+
         )
     }
 }

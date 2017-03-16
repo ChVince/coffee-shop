@@ -10,6 +10,7 @@ import ClipBar from './clipList'
 import Contacts from './Contacts'
 import AdminPage from './admin'
 import Login from './Login'
+import WeddingQuestionnaire from'./WeddingQuestionnaire'
 
 
 
@@ -25,6 +26,8 @@ ReactDOM.render(
                 <Route path="/about" component={About}/>
                 <Route path="/login" component={Login}/>
                 <Route path="/contacts" component={Contacts}/>
+                <Route path="/questionnaire" component={WeddingQuestionnaire}/>
+
                 <Route path="/portfolio" >
                     <IndexRedirect to="/portfolio/weddings"/>
                     <Route path="/portfolio/weddings" component={ClipBar}/>
