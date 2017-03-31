@@ -1,0 +1,54 @@
+.pagination-clip-page-wrapper {
+  margin: 15px auto;
+  &:first-child{
+    margin-top: 0!important;
+  }
+  width: 100%;
+  text-align: center;
+
+}
+
+.clip-wrapper-1 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 670px;
+}
+#cilp-page-tabs-wrapper{
+  width: 100%;
+  visibility: hidden;
+  height: 0px;
+  top: 300px;
+  background-color: rgba(0, 0, 0, 0.79);
+  opacity: 0;
+  transition: opacity 0.3s
+}
+
+.fixed-clip-page-tabs {
+  background-color: rgba(0, 0, 0, 0.79);
+  opacity: 1 !important;
+  z-index: 1000;
+  visibility: visible !important;
+  position: fixed !important;
+  top: 0px !important;
+}
+
+.clip-page-tabs {
+  background-color: rgba(0, 0, 0, 0.79);
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #ffffff;
+  padding: 4px;
+  list-style: none;
+  li {
+    margin-left: 15px;
+    margin-right: 15px;
+
+    display: inline-block;
+  }
+  .btn-menu-button {
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+  }
+}

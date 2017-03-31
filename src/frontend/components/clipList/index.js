@@ -11,7 +11,7 @@ import translate from '../../utils/translate'
 import * as _ from 'lodash'
 
 
-require('../../styles/refactoredStyles/clipList.less');
+require('../../styles/newStyles/clipList.less');
 
 
 class ClipBar extends React.Component {
@@ -45,80 +45,90 @@ class ClipBar extends React.Component {
         let activePage = this.props.page;
         let strings = this.props.strings;
         return (
-            <div className="clip-bar">
+            <div className="container-fluid">
                 <Notification error={this.props.notification}/>
 
-                <div id="cilp-tabs-wrapper">
-                    <ul className="clip-tabs">
-                        <li>
-                            <Link activeClassName='active-page-button-clip-list'
-                                  className="btn-menu-button btn-menu-button-clip-list"
-                                  to='/portfolio/weddings' onClick={this._handleSwitchClipListByTag}>
-                                {strings.portfolio.weddings}
-                            </Link>
-                        </li>
-                        <li >
-                            <Link activeClassName='active-page-button-clip-list'
-                                  className="btn-menu-button btn-menu-button-clip-list"
-                                  to='/portfolio/voice' onClick={this._handleSwitchClipListByTag}>
-                                {strings.portfolio.voice}
-                            </Link>
-                        </li>
-                        <li >
-                            <Link activeClassName='active-page-button-clip-list'
-                                  className="btn-menu-button btn-menu-button-clip-list"
-                                  to='/portfolio/other' onClick={this._handleSwitchClipListByTag}>
-                                {strings.portfolio.commercialProjects}
-                            </Link>
-                        </li>
-                    </ul>
+                <div className="row"
+                     id ="cilp-page-tabs-wrapper">
+
+
+
+
+                        <ul className="clip-page-tabs">
+                            <li>
+                                <Link activeClassName='active-page-button-clip-list'
+                                      className="btn-menu-button btn-menu-button-clip-page-list"
+                                      to='/portfolio/weddings' onClick={this._handleSwitchClipListByTag}>
+                                    {strings.portfolio.weddings}
+                                </Link>
+                            </li>
+                            <li >
+                                <Link activeClassName='active-page-button-clip-list'
+                                      className="btn-menu-button btn-menu-button-clip-page-list"
+                                      to='/portfolio/voice' onClick={this._handleSwitchClipListByTag}>
+                                    {strings.portfolio.voice}
+                                </Link>
+                            </li>
+                            <li >
+                                <Link activeClassName='active-page-button-clip-list'
+                                      className="btn-menu-button btn-menu-button-clip-page-list"
+                                      to='/portfolio/other' onClick={this._handleSwitchClipListByTag}>
+                                    {strings.portfolio.commercialProjects}
+                                </Link>
+                            </li>
+                        </ul>
+
+
                 </div>
-                <ul id="slide-contacts-id" className="slide-contacts">
-                    <li>
-                        <a className="social-network" href="#">
-                            <i className="fa fa-vk "></i>
-                        </a>
-                    </li>
 
-                    <li>
-                        <a className="social-network" href="#">
-                            <i className="fa fa-facebook" aria-hidden="true"></i>
-                        </a>
-                    </li>
+                <div className="row">
+                    <div className="
 
-                    <li>
-                        <a className="social-network" href="#">
-                            <i className="fa fa-instagram " aria-hidden="true"></i>
-                        </a>
-                    </li>
-                </ul>
-                <div className="pagination-wrapper">
-                    <div className="pagination-frame">
-                        <Pagination
-                            prev
-                            next
-                            first
-                            last
-                            bsSize="small"
-                            items={this.props.pageNum}
-                            activePage={activePage}
-                            onSelect={this._handlePagination}
-                        />
+                  col-lg-offset-4  col-lg-4
+                  col-md-offset-4  col-md-4
+                  col-sm-offset-4  col-sm-4
+                  col-xs-offset-4  col-xs-4
+">
+                        <div className="pagination-clip-page-wrapper">
+                            <Pagination
+                                prev
+                                next
+                                first
+                                last
+                                bsSize="small"
+                                items={this.props.pageNum}
+                                activePage={activePage}
+                                onSelect={this._handlePagination}
+                            />
+                        </div>
+
                     </div>
                 </div>
+
                 <ClipLayout clipList={this.props.clipList}/>
-                <div className="pagination-wrapper">
-                    <div className="pagination-frame">
-                        <Pagination
-                            prev
-                            next
-                            first
-                            last
-                            bsSize="small"
-                            items={this.props.pageNum}
-                            activePage={activePage}
-                            onSelect={this._handlePagination}
-                        />
+
+                <div className="row">
+                    <div className="
+
+                  col-lg-offset-4  col-lg-4
+                  col-md-offset-4  col-md-4
+                  col-sm-offset-4  col-sm-4
+                  col-xs-offset-4  col-xs-4
+">
+
+                        <div className="pagination-clip-page-wrapper">
+                            <Pagination
+                                prev
+                                next
+                                first
+                                last
+                                bsSize="small"
+                                items={this.props.pageNum}
+                                activePage={activePage}
+                                onSelect={this._handlePagination}
+                            />
+
+                        </div>
                     </div>
                 </div>
             </div>
